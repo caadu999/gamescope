@@ -12,10 +12,13 @@ export default async function Destaque() {
     <section className={styles.container}>
       <div>
         <p>[ DESTAQUE ] </p>
-        <img
-          src={jogosDestaqueDetalhes.background_image}
-          alt={jogosDestaqueDetalhes.name}
-        />
+        <Image
+          src={jogosDestaque.background_image}
+          width={500}
+          height={300}
+          alt={jogosDestaque.name}
+          priority
+        ></Image>
       </div>
       <ul>
         {jogosDestaque.genres.map((genre) => (

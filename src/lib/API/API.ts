@@ -7,6 +7,37 @@ export async function getJogos() {
   return res.data.results;
 }
 
+export async function getJogosEmAlta () {
+  const res = await APIURL.get<Data>('/games', {
+   params: {
+    ordering: '-rating',
+    page_size: 20
+   }
+  })
+
+  return res.data.results
+}
+
+export async function getLancamentos() {
+  const res = await APIURL.get<Data>("/games", {
+    params: {
+      ordering: "released",
+      page_size: 10
+    }
+  })
+  return res.data.results
+}
+
+export async function getMaisBemAvaliados(){
+  const res = await APIURL.get<Data>("/games", {
+    params: {
+      ordering: "-metacritic",
+      page_size: 10
+    }
+  })
+  return res.data.results
+}
+
 export async function getJogoDestaque() {
   const res = await APIURL.get<Data>('/games', {
     params: {

@@ -1,5 +1,6 @@
 import Header from '@/components/header';
-import { getJogoSlug, getJogos } from '@/lib/API/API';
+import { getJogoSlug } from '@/lib/API/API';
+import Image from 'next/image';
 
 type Props = {
   params: Promise<{
@@ -10,12 +11,18 @@ type Props = {
 export default async function Detalhes({ params }: Props) {
   const { slug } = await params;
   const detalhes = await getJogoSlug(slug);
+  
   console.log(detalhes);
 
   return (
     <div>
       <Header />
-      <img src={detalhes.background_image} alt={detalhes.name} />
+      <Image
+        src={detalhes.background_image}
+        width={500}
+        height={300}
+        alt={detalhes.name}
+      ></Image>
 
       <ul>
         {detalhes.genres.map((genre) => (
@@ -23,7 +30,7 @@ export default async function Detalhes({ params }: Props) {
         ))}
       </ul>
       <h1>{detalhes?.name}</h1>
-      <p>{detalhes.rating}</p>
+      <p>{detalhes.rating ? detalhes.rating : "Esse jogo ainda não foi avaliado"}</p>
       <p>{detalhes.description_raw}</p>
       <ul>
         Publishers:

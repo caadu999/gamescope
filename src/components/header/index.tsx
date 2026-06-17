@@ -1,8 +1,9 @@
 import Link from "next/link"
+import styles from "@/components/header/header.module.scss"
 
 export default function Header() {
   return (
-    <header>
+    <header className={styles.header}>
       <h1>
         <Link href={"/"}>GAMESCOPE</Link>
       </h1>
@@ -15,6 +16,7 @@ export default function Header() {
           <li><Link href={"/jogos"}>JOGOS</Link></li>
         </ul>
       </nav>
+      <input type="search" name="search" id="sarch" />
     </header>
   )
 }
