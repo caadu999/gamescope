@@ -9,7 +9,7 @@ export default function HeaderSideBar() {
       <nav>
         <ul>
           <li>
-            <Link href="#">1.1 JOGOS</Link>
+            <Link href="/">1.1 HOME</Link>
           </li>
           <li>
             <Link href="#">1.2 SOBRE</Link>
@@ -18,7 +18,7 @@ export default function HeaderSideBar() {
             <Link href="#">1.3 DESCUBRA</Link>
           </li>
           <li>
-            <Link href="#">1.4 JOGOS</Link>
+            <Link href="/jogos">1.4 JOGOS</Link>
           </li>
         </ul>
       </nav>
