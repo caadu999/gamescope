@@ -18,7 +18,7 @@ export default async function Jogos() {
 
   return (
     <div className={styles.container}>
-      <TituloHome text="Descubra novos jogos"/>
+      <TituloHome text="Descubra novos jogos" />
       <div className={styles.container__card}>
         <Titulo
           icon={<FaRocket size={34} />}
@@ -34,7 +34,7 @@ export default async function Jogos() {
       </div>
       <div className={styles.container__card}>
         <Titulo
-          icon={<FaMedal size={34}/>}
+          icon={<FaMedal size={34} />}
           text="Mais bem avaliados"
           className={styles.iconPurple}
           link="melhores"
@@ -54,7 +54,7 @@ export default async function Jogos() {
         />
         <ul className={styles.lista}>
           {lancamentos
-            .map((jogo) => <Card key={jogo.id} jogo={jogo}/>)
+            .map((jogo) => <Card key={jogo.id} jogo={jogo} />)
             .slice(0, 4)}
         </ul>
       </div>

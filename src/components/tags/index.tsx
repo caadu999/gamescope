@@ -1,14 +1,10 @@
-import { Genre,  } from "@/types/types"
-import styles from "@/components/tags/tags.module.scss"
+import { Genre } from '@/types/types';
+import styles from '@/components/tags/tags.module.scss';
 
 type TagsProps = {
-  text: Genre
-}
+  text: Genre;
+};
 
-export default function Tags({text}: TagsProps) {
-  return (
-    <li className={styles.lista}>
-      {text.name}
-    </li>
-  )
+export default function Tags({ text }: TagsProps) {
+  return <li className={styles.lista}>{text.name}</li>;
 }

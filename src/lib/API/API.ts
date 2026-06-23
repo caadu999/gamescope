@@ -7,35 +7,35 @@ export async function getJogos() {
   return res.data.results;
 }
 
-export async function getJogosEmAlta () {
+export async function getJogosEmAlta() {
   const res = await APIURL.get<Data>('/games', {
-   params: {
-    ordering: '-rating',
-    page_size: 20
-   }
-  })
+    params: {
+      ordering: '-rating',
+      page_size: 20,
+    },
+  });
 
-  return res.data.results
+  return res.data.results;
 }
 
 export async function getLancamentos() {
-  const res = await APIURL.get<Data>("/games", {
+  const res = await APIURL.get<Data>('/games', {
     params: {
-      ordering: "released",
-      page_size: 20
-    }
-  })
-  return res.data.results
+      ordering: 'released',
+      page_size: 20,
+    },
+  });
+  return res.data.results;
 }
 
-export async function getMaisBemAvaliados(){
-  const res = await APIURL.get<Data>("/games", {
+export async function getMaisBemAvaliados() {
+  const res = await APIURL.get<Data>('/games', {
     params: {
-      ordering: "-metacritic",
-      page_size: 20
-    }
-  })
-  return res.data.results
+      ordering: '-metacritic',
+      page_size: 20,
+    },
+  });
+  return res.data.results;
 }
 
 export async function getJogoDestaque() {
@@ -59,6 +59,6 @@ export async function getJogoSlug(slug: string) {
 }
 
 export async function getScreenshots(slug: string) {
-  const res = await APIURL.get<ScreenshotData>(`/games/${slug}/screenshots`)
-  return res.data.results
+  const res = await APIURL.get<ScreenshotData>(`/games/${slug}/screenshots`);
+  return res.data.results;
 }

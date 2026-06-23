@@ -14,7 +14,7 @@ export type Results = {
 };
 
 export type Detalhes = {
-  slug: string
+  slug: string;
   id: number;
   description_raw: string;
   name: string;
@@ -38,11 +38,10 @@ export type Publisher = {
 
 export type ScreenshotData = {
   count: number;
-  results: Screenshot[]
-}
+  results: Screenshot[];
+};
 
 export type Screenshot = {
   id: number;
   image: string;
 };
-
