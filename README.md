@@ -35,3 +35,7 @@ npm run dev
 ```
 
 Abra `http://localhost:3000` no navegador.
+
+## Vercel
+
+`https://gamescope-zeta.vercel.app/`
