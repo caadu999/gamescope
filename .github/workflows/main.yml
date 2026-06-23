@@ -1,0 +1,29 @@
+
+
+name: Pipeline CI/CD
+
+on:
+ push:
+  branches:
+   - main
+ workflow_dispatch:
+ 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do coodigo
+        uses: actions/checkout@v6
+      
+      - name: Instalação do node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Instalação das dependências    
+        run: npm install 
+        
+      - name: Rodar a build
+        run: npm run build
+     
