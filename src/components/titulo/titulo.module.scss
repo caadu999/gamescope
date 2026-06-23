@@ -1,0 +1,22 @@
+.container {
+  display: inline-flex;
+  width: 800px;
+  gap: 20px;
+  align-items: center;
+  margin-top: 40px;
+
+  h1 {
+    font-size: 2.6em;
+    font-weight: bolder;
+  }
+
+  &__links {
+    margin-left: 40px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.603);
+
+  }
+}

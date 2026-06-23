@@ -10,10 +10,11 @@ export type Results = {
   background_image: string;
   rating: number;
   description_raw: string;
-  genres: Genre[]
+  genres: Genre[];
 };
 
 export type Detalhes = {
+  slug: string
   id: number;
   description_raw: string;
   name: string;
@@ -22,6 +23,7 @@ export type Detalhes = {
   released: string;
   genres: Genre[];
   publishers: Publisher[];
+  screenshot: Screenshot[];
 };
 
 export type Genre = {
@@ -33,3 +35,14 @@ export type Publisher = {
   name: string;
   id: number;
 };
+
+export type ScreenshotData = {
+  count: number;
+  results: Screenshot[]
+}
+
+export type Screenshot = {
+  id: number;
+  image: string;
+};
+

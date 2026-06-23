@@ -1,10 +1,46 @@
 .header {
   display: flex;
-  width: 100%;
+  width: 700px;
   justify-content: space-between;
+  align-items: center;
+  padding: 0px 12px;
+  height: 60px;
+  border: 1px solid #434141;
+  border-radius: 10px;
+  background-color: #232323;
+
+  h1 {
+    font-size: 1.4em;
+    background-color: #bdfb84;
+    padding: 4px 14px;
+    border-radius: 6px;
+    color: #232323;
+    font-weight: bolder;
+  }
 
   ul {
     display: flex;
-    gap: 16px;
-  }  
+    align-items: center;
+    font-weight: bold;
+
+    li {
+      padding: 6px 12px;
+      border-radius: 20px;
+      transition: all 0.2s ease-in;
+
+      &:hover {
+        background-color: white;
+        color: #232323;
+      }
+    }
+  }
+
+  &__search {
+    background-color: transparent;
+    border: 1px solid grey;
+    border-radius: 6px;
+    padding: 0px 16px;
+    width: 300px;
+    height: 80%;
+  }
 }
