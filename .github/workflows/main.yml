@@ -26,4 +26,7 @@ jobs:
         
       - name: Rodar a build
         run: npm run build
+        env: 
+         API_URL: ${{ vars.API_URL}}
+         API_KEY: ${{ secrets.API_KEY}}
      
