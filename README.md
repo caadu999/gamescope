@@ -1,6 +1,6 @@
 # GAMESCOPE
 
-> 🚧 Projeto em desenvolvimento.
+> Projeto em desenvolvimento.
 
 Uma plataforma para descoberta e exploração de jogos digitais desenvolvida com Next.js e TypeScript.
 
