@@ -3,6 +3,8 @@ import Grid from '@/components/grid';
 import TituloHome from '@/components/tituloHome';
 import { getLancamentos } from '@/lib/API/API';
 
+export const dynamic = 'force-dynamic';
+
 export default async function Lancamentos() {
   const res = await getLancamentos();
 
