@@ -25,7 +25,9 @@ export default function SearchInput() {
         onChange={(e) => setQuery(e.target.value)}
         className={styles.search}
       />
-      <button className={styles.button} type="submit">Buscar</button>
+      <button className={styles.button} type="submit">
+        Buscar
+      </button>
     </form>
   );
 }

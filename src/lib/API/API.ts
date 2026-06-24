@@ -63,11 +63,13 @@ export async function getScreenshots(slug: string) {
   return res.data.results;
 }
 
-export async function Search(query: string){
-  const res = await fetch(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${encodeURIComponent(query)}&page_size=9`)
+export async function Search(query: string) {
+  const res = await fetch(
+    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${encodeURIComponent(query)}&page_size=9`,
+  );
 
-  if(!res.ok) throw new Error ("Falha ao buscar Jogos")
+  if (!res.ok) throw new Error('Falha ao buscar Jogos');
 
-  const data = await res.json()
-  return data.results as Results[]
+  const data = await res.json();
+  return data.results as Results[];
 }

@@ -3,7 +3,7 @@ import { Search } from '@/lib/API/API';
 import { oldschoolGrotesk } from '../layout';
 import { IoIosArrowBack } from 'react-icons/io';
 import Link from 'next/link';
-import styles from "@/app/search/search.module.scss"
+import styles from '@/app/search/search.module.scss';
 
 type SearchParams = {
   searchParams: Promise<{
@@ -18,9 +18,8 @@ export default async function SearchPage({ searchParams }: SearchParams) {
 
   return (
     <section className={styles.container}>
-      <Link href={"/"}
-      className={styles.container__back}>
-        <IoIosArrowBack size={20}/> 
+      <Link href={'/'} className={styles.container__back}>
+        <IoIosArrowBack size={20} />
         <span>Voltar para Home</span>
       </Link>
 

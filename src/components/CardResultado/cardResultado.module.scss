@@ -8,7 +8,6 @@
   border-radius: 12px;
   overflow: hidden;
 
-
   &__img {
     width: 340px;
     height: 100%;
@@ -41,8 +40,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    
-
 
     h2 {
       font-size: 2em;
@@ -51,7 +48,6 @@
 
     p {
       width: 400px;
-
     }
 
     ul {
@@ -65,8 +61,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    
-
   }
 }
 

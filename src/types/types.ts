@@ -3,7 +3,6 @@ export type Data = {
   results: Results[];
 };
 
-
 export type Results = {
   id: number;
   slug: string;
