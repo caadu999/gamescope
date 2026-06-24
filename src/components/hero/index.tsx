@@ -3,10 +3,10 @@ import { IoGameController } from 'react-icons/io5';
 
 import Destaque from '../destaque';
 import TituloHome from '../tituloHome';
-import Link from 'next/link';
 import CardFlutuante from '../cardFlutuante/cardFlutuante';
 import { FaFireAlt } from 'react-icons/fa';
 import { BiSolidGame } from 'react-icons/bi';
+import SearchInput from '../searchInput';
 
 export default function Hero() {
   return (
@@ -27,15 +27,8 @@ export default function Hero() {
           <BiSolidGame size={40} />
         </div>
       </CardFlutuante>
+      <SearchInput />
 
-      <div className={styles.container__buttons}>
-        <Link href={'/jogos'} className={styles.button}>
-          Explorar
-        </Link>
-        <Link href={'/'} className={styles.button}>
-          Lista de desejos
-        </Link>
-      </div>
       <Destaque />
     </section>
   );

@@ -1,4 +1,4 @@
-import { Data, ScreenshotData } from '@/types/types';
+import { Data, Results, ScreenshotData } from '@/types/types';
 import { APIURL } from './axios';
 import { Detalhes } from '@/types/types';
 
@@ -61,4 +61,13 @@ export async function getJogoSlug(slug: string) {
 export async function getScreenshots(slug: string) {
   const res = await APIURL.get<ScreenshotData>(`/games/${slug}/screenshots`);
   return res.data.results;
+}
+
+export async function Search(query: string){
+  const res = await fetch(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${encodeURIComponent(query)}&page_size=9`)
+
+  if(!res.ok) throw new Error ("Falha ao buscar Jogos")
+
+  const data = await res.json()
+  return data.results as Results[]
 }

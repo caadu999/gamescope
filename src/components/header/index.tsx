@@ -25,13 +25,7 @@ export default function Header() {
           </li>
         </ul>
       </nav>
-      <input
-        type="search"
-        name="search"
-        id="sarch"
-        placeholder="Buscar jogos"
-        className={styles.header__search}
-      />
+    
     </header>
   );
 }

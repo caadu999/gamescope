@@ -1,13 +1,14 @@
 .header {
   display: flex;
-  width: 700px;
-  justify-content: space-between;
+  width: 380px;
+  gap: 20px;
   align-items: center;
   padding: 0px 12px;
   height: 60px;
   border: 1px solid #434141;
   border-radius: 10px;
   background-color: #232323;
+  justify-content: center;
 
   h1 {
     font-size: 1.4em;
