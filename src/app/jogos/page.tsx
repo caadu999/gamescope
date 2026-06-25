@@ -14,9 +14,11 @@ import Titulo from '@/components/titulo/titulo';
 export const revalidate = 3600;
 
 export default async function Jogos() {
-  const jogosEmAlta = await getJogosEmAlta();
-  const bemAval = await getMaisBemAvaliados();
-  const lancamentos = await getLancamentos();
+  const [jogosEmAlta, bemAval, lancamentos] = await Promise.all([
+    getJogosEmAlta(),
+    getMaisBemAvaliados(),
+    getLancamentos(),
+  ]);
 
   return (
     <div className={styles.container}>

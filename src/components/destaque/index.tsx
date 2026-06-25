@@ -3,7 +3,6 @@ import { getDetalhes, getJogoDestaque } from '@/lib/API/API';
 import Link from 'next/link';
 import Tags from '../tags';
 import { FaStar } from 'react-icons/fa';
-
 import { FaBookmark } from 'react-icons/fa';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 import { FaTrophy } from 'react-icons/fa';
