@@ -11,6 +11,8 @@ import { FaMedal } from 'react-icons/fa6';
 import { FaFireAlt } from 'react-icons/fa';
 import Titulo from '@/components/titulo/titulo';
 
+export const revalidate = 3600;
+
 export default async function Jogos() {
   const jogosEmAlta = await getJogosEmAlta();
   const bemAval = await getMaisBemAvaliados();

@@ -21,6 +21,7 @@ export default function Card({ jogo }: CardProps) {
           src={jogo.background_image || '/placeholder.png'}
           alt={jogo.name}
           fill
+          quality={80}
         />
       </div>
 

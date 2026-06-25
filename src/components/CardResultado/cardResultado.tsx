@@ -25,6 +25,7 @@ export default async function CardResultado({ jogo }: Props) {
           src={jogo.background_image || '/palceholder.png'}
           alt={jogo.name}
           fill
+          quality={80}
         ></Image>
       </div>
       <div className={styles.containerInfo}>

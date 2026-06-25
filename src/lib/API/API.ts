@@ -7,17 +7,6 @@ export async function getJogos() {
   return res.data.results;
 }
 
-export async function getJogosEmAlta() {
-  const res = await APIURL.get<Data>('/games', {
-    params: {
-      ordering: '-rating',
-      page_size: 20,
-    },
-  });
-
-  return res.data.results;
-}
-
 export async function getLancamentos() {
   const res = await fetch(
     `https://api.rawg.io/api/games?key=${process.env.API_KEY}&ordering=released&page_size=20`,
@@ -28,15 +17,25 @@ export async function getLancamentos() {
   const data = await res.json();
   return data.results as Results[];
 }
+export async function getJogosEmAlta() {
+  const res = await fetch(
+    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&ordering=-rating&page_size=20`,
+  );
 
+  if (!res.ok) throw new Error('Falha ao buscar Jogos em Alta');
+
+  const data = await res.json();
+  return data.results as Results[];
+}
 export async function getMaisBemAvaliados() {
-  const res = await APIURL.get<Data>('/games', {
-    params: {
-      ordering: '-metacritic',
-      page_size: 20,
-    },
-  });
-  return res.data.results;
+  const res = await fetch(
+    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&ordering=-metacritic&page_size=20`,
+  );
+
+  if (!res.ok) throw new Error('Falha ao buscar Jogos mais bem avaliados');
+
+  const data = await res.json();
+  return data.results as Results[];
 }
 
 export async function getJogoDestaque() {
