@@ -1,5 +1,5 @@
 import styles from '@/components/tituloHome/titulo.module.scss';
-import { oldschoolGrotesk } from '@/app/layout';
+import { oldschoolGrotesk } from '@/lib/fonts';
 
 type Props = {
   text: string;

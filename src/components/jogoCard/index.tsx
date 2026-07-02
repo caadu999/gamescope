@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styles from '@/components/jogoCard/card.module.scss';
 import Tags from '../tags';
 import { FaStar } from 'react-icons/fa';
-import { oldschoolGrotesk } from '@/app/layout';
+import { oldschoolGrotesk } from '@/lib/fonts';
 import { FaPlay } from 'react-icons/fa';
 import Image from 'next/image';
 

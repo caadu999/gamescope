@@ -1,5 +1,5 @@
 import styles from '@/components/cardFlutuante/cardFlutuante.module.scss';
-import { oldschoolGrotesk } from '@/app/layout';
+import { oldschoolGrotesk } from '@/lib/fonts';
 
 type Props = {
   children: React.ReactNode;

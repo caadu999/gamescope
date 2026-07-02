@@ -3,10 +3,11 @@ import { getDetalhes, getJogoDestaque } from '@/lib/API/API';
 import Link from 'next/link';
 import Tags from '../tags';
 import { FaStar } from 'react-icons/fa';
-import { FaBookmark } from 'react-icons/fa';
+
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 import { FaTrophy } from 'react-icons/fa';
-import { oldschoolGrotesk } from '@/app/layout';
+import { oldschoolGrotesk } from '@/lib/fonts';
+import Salvar from '../salvarButton/salvar';
 
 export default async function Destaque() {
   const jogosDestaque = await getJogoDestaque();
@@ -48,11 +49,8 @@ export default async function Destaque() {
               </span>
             </div>
             <div className={styles.destaque__direita}>
-              <Link href={'/'}>
-                <div className={styles.destaque__icons}>
-                  <FaBookmark className={styles.destaque__icon} size={20} />
-                </div>
-              </Link>
+              <Salvar jogo={jogosDestaque} />
+
               <Link
                 href={`jogos/${jogosDestaque.slug}`}
                 className={styles.button}

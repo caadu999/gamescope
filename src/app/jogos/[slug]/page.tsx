@@ -1,7 +1,7 @@
 import { getJogoSlug, getScreenshots } from '@/lib/API/API';
 import styles from '@/app/jogos/[slug]/detalhes.module.scss';
 import Tags from '@/components/tags';
-import { oldschoolGrotesk } from '@/app/layout';
+import { oldschoolGrotesk } from '@/lib/fonts';
 import { FaPlay } from 'react-icons/fa';
 import { FaBookmark } from 'react-icons/fa';
 import Image from 'next/image';
@@ -11,6 +11,21 @@ type Props = {
     slug: string;
   }>;
 };
+
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  const game = await getJogoSlug(slug);
+
+  return {
+    title: `GAMESCOPE | ${game.name}`,
+    description: game.description_raw,
+    openGraph: {
+      title: game.name,
+      description: game.description_raw,
+      images: [{ url: game.background_image }],
+    },
+  };
+}
 
 export default async function Detalhes({ params }: Props) {
   const { slug } = await params;

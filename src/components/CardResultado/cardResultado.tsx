@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Tags from '../tags';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
-import { oldschoolGrotesk } from '@/app/layout';
+import { oldschoolGrotesk } from '@/lib/fonts';
 import { FaStar } from 'react-icons/fa';
 import { getDetalhes } from '@/lib/API/API';
 

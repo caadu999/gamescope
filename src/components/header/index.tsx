@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styles from '@/components/header/header.module.scss';
-import { oldschoolGrotesk } from '@/app/layout';
+import { oldschoolGrotesk } from '@/lib/fonts';
 
 export default function Header() {
   return (
@@ -18,7 +18,7 @@ export default function Header() {
             <Link href={'/'}>Sobre</Link>
           </li>
           <li>
-            <Link href={'/'}>Wishlist</Link>
+            <Link href={'/wishlist'}>Wishlist</Link>
           </li>
           <li>
             <Link href={'/jogos'}>Jogos</Link>

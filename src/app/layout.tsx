@@ -2,17 +2,12 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Roboto } from 'next/font/google';
 import Header from '../components/header';
-import localFont from 'next/font/local';
+import { WishlistProvider } from '@/context/wishlistContext';
 
 const robFont = Roboto({
   subsets: ['latin'],
 });
 
-export const oldschoolGrotesk = localFont({
-  src: '../../public/fonts/OldschoolGroteskHeavy.ttf',
-  variable: '--font-oldschool',
-  display: 'swap',
-});
 export const metadata: Metadata = {
   title: 'GAMESCOPE',
   description: 'Sua melhor fonte de informações sobre jogos',
@@ -26,8 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={robFont.className}>
-        <Header />
-        {children}
+        <WishlistProvider>
+          <Header />
+          {children}
+        </WishlistProvider>
       </body>
     </html>
   );

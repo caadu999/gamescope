@@ -1,6 +1,6 @@
 import CardResultado from '@/components/CardResultado/cardResultado';
 import { Search } from '@/lib/API/API';
-import { oldschoolGrotesk } from '../layout';
+import { oldschoolGrotesk } from '@/lib/fonts';
 import { IoIosArrowBack } from 'react-icons/io';
 import Link from 'next/link';
 import styles from '@/app/search/search.module.scss';
