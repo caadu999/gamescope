@@ -2,6 +2,11 @@
 import { WishListContext } from '@/context/wishlistContext';
 import { useContext } from 'react';
 import CardWishlist from '@/components/cardWishlist/cardWishlist';
+import TituloHome from '@/components/tituloHome';
+import styles from '@/app/wishlist/page.module.scss';
+import { FaHeart } from 'react-icons/fa';
+import CardFlutuante from '@/components/cardFlutuante/cardFlutuante';
+import { FaGamepad } from 'react-icons/fa';
 
 export default function WishlistPage() {
   const context = useContext(WishListContext);
@@ -15,8 +20,27 @@ export default function WishlistPage() {
   const { wishlist } = context;
 
   return (
-    <section>
-      <div>
+    <section className={styles.container}>
+      <div className={styles.container__titulo}>
+        {wishlist.length > 0 ? (
+          <TituloHome text="Lista de Desejos" />
+        ) : (
+          <TituloHome text="Comece a adicionar jogos!" />
+        )}
+
+        <CardFlutuante className={styles.cardGreen}>
+          <div>
+            <FaHeart size={40} />
+          </div>
+        </CardFlutuante>
+        <CardFlutuante className={styles.cardOrange}>
+          <div>
+            <FaGamepad size={40} />
+          </div>
+        </CardFlutuante>
+      </div>
+
+      <div className={styles.container__grid}>
         {wishlist.map((jogo) => (
           <CardWishlist jogo={jogo} key={jogo.id} />
         ))}

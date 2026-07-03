@@ -3,7 +3,7 @@ import styles from '@/app/jogos/[slug]/detalhes.module.scss';
 import Tags from '@/components/tags';
 import { oldschoolGrotesk } from '@/lib/fonts';
 import { FaPlay } from 'react-icons/fa';
-import { FaBookmark } from 'react-icons/fa';
+import Salvar from '@/components/salvarButton/salvar';
 import Image from 'next/image';
 
 type Props = {
@@ -58,11 +58,7 @@ export default async function Detalhes({ params }: Props) {
             </ul>
           </div>
           <div className={styles.detalhes__buttons}>
-            <div className={styles.detalhes__icons}>
-              <FaBookmark size={20} />
-
-              <span>Lista de desejos</span>
-            </div>
+            <Salvar jogo={detalhes} />
             <div className={styles.detalhes__icons}>
               <FaPlay size={20} />
               <span>Jogar</span>

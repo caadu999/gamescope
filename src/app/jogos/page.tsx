@@ -23,6 +23,7 @@ export default async function Jogos() {
   return (
     <div className={styles.container}>
       <TituloHome text="Descubra novos jogos" />
+
       <div className={styles.container__card}>
         <Titulo
           icon={<FaRocket size={34} />}
