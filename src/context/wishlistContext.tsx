@@ -24,6 +24,7 @@ export function WishlistProvider({ children }: WishlistProviderProps) {
   // roda só no cliente
   useEffect(() => {
     const item = getItem('wishlist');
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (item) setWishlist(item as Results[]);
   }, []);
 
