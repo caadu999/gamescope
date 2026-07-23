@@ -1,10 +1,9 @@
 import { Results } from '@/types/types';
 import Link from 'next/link';
-import styles from '@/components/jogoCard/card.module.scss';
+
 import Tags from '../tags';
 import { FaStar } from 'react-icons/fa';
 import { oldschoolGrotesk } from '@/lib/fonts';
-import { FaPlay } from 'react-icons/fa';
 import Image from 'next/image';
 
 type CardProps = {
@@ -13,44 +12,42 @@ type CardProps = {
 
 export default function Card({ jogo }: CardProps) {
   const tituloMenor = `${jogo.name.substring(0, 30)}...`;
-  console.log(jogo);
+
   return (
-    <section className={styles.container}>
-      <div className={styles.container__img}>
-        <Image
-          src={jogo.background_image || '/placeholder.png'}
-          alt={jogo.name}
-          fill
-          quality={80}
-        />
-      </div>
-
-      <div className={styles.card__info}>
-        <h2 className={oldschoolGrotesk.className}>
-          {jogo.name.length > 30 ? tituloMenor : jogo.name}
-        </h2>
-        <ul className={styles.lista}>
-          {jogo.genres.length > 0 ? (
-            jogo.genres.map((genre) => <Tags key={genre.id} text={genre} />)
-          ) : (
-            <li>Nenhum gênero cadastrado</li>
-          )}
-        </ul>
-      </div>
-
-      <div className={styles.card__bottom}>
-        <div>
-          {' '}
-          <FaStar size={20} /> <span>{jogo.rating ? jogo.rating : 'S/A'}</span>
+    <section className="flex w-24 flex-col justify-between rounded-lg bg-[#232323] md:w-full xl:h-96 xl:overflow-hidden">
+      <Link href={`/jogos/${jogo.slug}`}>
+        <div className="relative h-40 overflow-hidden rounded-lg md:h-52 xl:rounded-none">
+          <Image
+            className="object-cover transition-all duration-200 ease-in hover:scale-125"
+            src={jogo.background_image || '/placeholder.png'}
+            alt={jogo.name}
+            fill
+            quality={80}
+          />
         </div>
-
-        <Link
-          className={styles.card__bottom__button}
-          href={`/jogos/${jogo.slug}`}
+      </Link>
+      <div className="flex h-full flex-col justify-between gap-2 xl:p-4">
+        <h1
+          className={`hidden w-[90%] text-[20px] xl:block ${oldschoolGrotesk.className}`}
         >
-          <FaPlay size={20} />
-          Ver Mais
-        </Link>
+          {jogo.name.length >= 30 ? tituloMenor : jogo.name}
+        </h1>
+        <p className="hidden items-center text-[20px] font-bold xl:inline-flex xl:gap-2">
+          {' '}
+          <FaStar size={20} color="#fdc317" />{' '}
+          {jogo.rating ? jogo.rating : 'S/N'}
+        </p>
+        <div className="hidden gap-2 xl:flex">
+          {jogo.genres.length > 0 ? (
+            jogo.genres.map((genre) => (
+              <Tags text={genre} key={jogo.description_raw} />
+            ))
+          ) : (
+            <p className="bg-[#141414] font-bold xl:rounded-lg xl:px-4 xl:py-2">
+              S/N
+            </p>
+          )}
+        </div>
       </div>
     </section>
   );

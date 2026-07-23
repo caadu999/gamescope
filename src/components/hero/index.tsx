@@ -12,17 +12,17 @@ export default function Hero() {
   return (
     <section className={styles.container}>
       <TituloHome text="Ache seu novo jogo favorito aqui." />
-      <CardFlutuante className={styles.cardGreen}>
+      <CardFlutuante className="left-2/4 top-8 z-30 hidden rounded-[50%] bg-[#ff6d38] p-3 md:absolute md:hidden lg:block">
         <div>
           <FaFireAlt size={40} />
         </div>
       </CardFlutuante>
-      <CardFlutuante className={styles.cardYellow}>
+      <CardFlutuante className="right-3/4 top-8 z-20 hidden rounded-[50%] bg-[#7a78ff] p-3 md:absolute md:hidden lg:block">
         <div>
           <IoGameController size={40} />
         </div>
       </CardFlutuante>
-      <CardFlutuante className={styles.cardOrange}>
+      <CardFlutuante className="right-96 top-40 z-10 hidden rounded-[50%] bg-[#fdc317] p-3 md:absolute md:hidden lg:block">
         <div>
           <BiSolidGame size={40} />
         </div>

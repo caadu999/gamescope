@@ -3,6 +3,7 @@ import './globals.css';
 import { Roboto } from 'next/font/google';
 import Header from '../components/header';
 import { WishlistProvider } from '@/context/wishlistContext';
+import './globals.css';
 
 const robFont = Roboto({
   subsets: ['latin'],

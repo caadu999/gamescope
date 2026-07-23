@@ -5,16 +5,14 @@
   flex-direction: column;
   min-height: calc(100vh - 80px);
 
-  &__titulo {
-    margin-bottom: 64px;
-  }
-
   &__grid {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 24px;
     flex-wrap: wrap;
+    margin-bottom: 24px;
   }
 }
 

@@ -10,6 +10,8 @@ import { FaRocket } from 'react-icons/fa';
 import { FaMedal } from 'react-icons/fa6';
 import { FaFireAlt } from 'react-icons/fa';
 import Titulo from '@/components/titulo/titulo';
+import SearchInput from '@/components/searchInput';
+import CardFlutuante from '@/components/cardFlutuante/cardFlutuante';
 
 export const revalidate = 3600;
 
@@ -23,6 +25,12 @@ export default async function Jogos() {
   return (
     <div className={styles.container}>
       <TituloHome text="Descubra novos jogos" />
+      <CardFlutuante className="left-2/4 top-8 z-30 hidden rounded-[50%] bg-[#ff6d38] p-3 md:absolute md:hidden lg:hidden">
+        <div>
+          <FaFireAlt size={40} />
+        </div>
+      </CardFlutuante>
+      <SearchInput />
 
       <div className={styles.container__card}>
         <Titulo

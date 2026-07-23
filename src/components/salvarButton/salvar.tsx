@@ -1,7 +1,7 @@
 'use client';
 
 import { FaBookmark } from 'react-icons/fa';
-import styles from '@/components/salvarButton/salvar.module.scss';
+
 import { useContext } from 'react';
 import { WishListContext } from '@/context/wishlistContext';
 import { Results } from '@/types/types';
@@ -30,12 +30,11 @@ export default function Salvar({ jogo }: JogoProps) {
   }
 
   return (
-    <button onClick={() => addWishlist()} className={styles.destaque__icons}>
-      {jaAdd ? (
-        <FaCheck className={styles.destaque__icon} size={20} />
-      ) : (
-        <FaBookmark className={styles.destaque__icon} size={20} />
-      )}
+    <button
+      onClick={() => addWishlist()}
+      className="flex h-16 w-16 items-center justify-center rounded-md border-2 border-solid border-neutral-800 bg-[#101014] transition-all duration-200 ease-in hover:cursor-pointer hover:bg-[#fdf9f0] hover:text-[#101014]"
+    >
+      {jaAdd ? <FaCheck size={20} /> : <FaBookmark size={20} />}
     </button>
   );
 }

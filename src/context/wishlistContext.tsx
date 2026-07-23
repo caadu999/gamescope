@@ -18,11 +18,16 @@ type WishlistProviderProps = {
 };
 
 export function WishlistProvider({ children }: WishlistProviderProps) {
-  const [wishlist, setWishlist] = useState(() => {
-    const item = getItem('wishlist');
-    return (item as Results[]) || [];
-  });
+  // valor inicial seguro pro servidor — sem tocar em window aqui
+  const [wishlist, setWishlist] = useState<Results[]>([]);
 
+  // roda só no cliente, depois da montagem
+  useEffect(() => {
+    const item = getItem('wishlist');
+    if (item) setWishlist(item as Results[]);
+  }, []);
+
+  // salva só depois que já carregou (evita sobrescrever com [] antes de ler)
   useEffect(() => {
     setItem('wishlist', wishlist);
   }, [wishlist]);

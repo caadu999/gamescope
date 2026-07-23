@@ -8,7 +8,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 1200px;
 
   &__card {
     display: flex;
@@ -20,16 +19,10 @@
 
 .iconOrange {
   background-color: #ff6d38;
-  padding: 12px 20px;
-  border-radius: 12px;
 }
 .iconPurple {
   background-color: #7a78ff;
-  padding: 12px 20px;
-  border-radius: 12px;
 }
 .iconYellow {
   background-color: #fdc317;
-  padding: 12px 20px;
-  border-radius: 12px;
 }

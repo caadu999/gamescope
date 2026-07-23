@@ -1,7 +1,6 @@
 import React from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
 import Link from 'next/link';
-import styles from '@/components/titulo/titulo.module.scss';
 
 type Props = {
   icon: React.ReactNode;
@@ -12,17 +11,19 @@ type Props = {
 
 export default function Titulo({ icon, text, className, link }: Props) {
   return (
-    <div className={styles.container}>
-      <div className={className}>{icon}</div>
-      <h1>{text}</h1>
+    <div
+      className={`h-22 flex w-full items-center justify-between rounded-md bg-[pink] p-4 md:mt-4 md:w-[87vw] xl:w-[1200px] ${className}`}
+    >
+      <Link className="flex w-full justify-between" href={`/jogos/${link}`}>
+        <div>{icon}</div>
+        <h1 className="flex items-center gap-2 text-2xl font-bold">
+          {text} <IoIosArrowForward size={20} />
+        </h1>
 
-      <div>
-        <Link className={styles.container__links} href={`/jogos/${link}`}>
+        <div className="hidden">
           <span>Ver todos</span>
-
-          <IoIosArrowForward />
-        </Link>
-      </div>
+        </div>
+      </Link>
     </div>
   );
 }

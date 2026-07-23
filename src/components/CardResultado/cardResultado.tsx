@@ -15,6 +15,7 @@ type Props = {
 export default async function CardResultado({ jogo }: Props) {
   const nome = jogo.name.substring(0, 43) + '...';
   const detalhes = await getDetalhes(jogo.slug);
+  const ratingSlice = jogo.genres.slice(0, 3);
 
   const descricao = detalhes.description_raw.substring(0, 80) + '...';
 
@@ -40,13 +41,15 @@ export default async function CardResultado({ jogo }: Props) {
                 : detalhes.description_raw}
             </p>
           </div>
-          <ul>
+          <div className="inline-flex gap-2">
             {jogo.genres.length > 0 ? (
-              jogo.genres.map((genre) => <Tags text={genre} key={genre.id} />)
+              ratingSlice.map((genre) => <Tags text={genre} key={genre.id} />)
             ) : (
-              <li>nenhum gênero cadastrado</li>
+              <p className="bg-[#141414] font-bold xl:w-4 xl:rounded-lg xl:px-4 xl:py-2">
+                S/N
+              </p>
             )}
-          </ul>
+          </div>
         </div>
         <div className={styles.container__interacoes}>
           <div className={styles.container__nota}>
