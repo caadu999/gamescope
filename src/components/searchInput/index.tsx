@@ -2,8 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 export default function SearchInput() {
   const [query, setQuery] = useState('');

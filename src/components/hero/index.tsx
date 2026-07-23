@@ -1,6 +1,5 @@
 import styles from '@/components/hero/hero.module.scss';
 import { IoGameController } from 'react-icons/io5';
-
 import Destaque from '../destaque';
 import TituloHome from '../tituloHome';
 import CardFlutuante from '../cardFlutuante/cardFlutuante';

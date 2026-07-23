@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import styles from '@/components/header/header.module.scss';
 import { oldschoolGrotesk } from '@/lib/fonts';
-import { motion } from 'motion/react';
+import { motion } from "framer-motion";
 
 export default function Header() {
   return (
