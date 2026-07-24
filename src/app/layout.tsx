@@ -4,6 +4,8 @@ import { Roboto } from 'next/font/google';
 import Header from '../components/header';
 import { WishlistProvider } from '@/context/wishlistContext';
 import './globals.css';
+import Footer from '@/components/Footer';
+import { SmoothScroll } from '@/components/SmoothScroll';
 
 const robFont = Roboto({
   subsets: ['latin'],
@@ -23,8 +25,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={robFont.className}>
         <WishlistProvider>
-          <Header />
-          {children}
+          <SmoothScroll>
+            <Header />
+            {children}
+            <Footer />
+          </SmoothScroll>
         </WishlistProvider>
       </body>
     </html>

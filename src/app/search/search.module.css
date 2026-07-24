@@ -1,0 +1,17 @@
+.container {
+  color: #fdf9f0;
+}
+.container h1 span {
+  color: #bdfb84;
+}
+.container p {
+  margin-bottom: 40px;
+}
+.container__back {
+  margin-top: 60px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9em;
+  font-weight: bold;
+} /*# sourceMappingURL=search.module.css.map */

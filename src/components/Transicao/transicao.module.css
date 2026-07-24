@@ -1,0 +1,14 @@
+.transicao {
+  height: calc(100vh + 200px);
+  width: 100%;
+  position: fixed;
+  z-index: 50;
+}
+.transicao svg {
+  height: 100%;
+  width: 100%;
+}
+.transicao svg path {
+  stroke: rgb(0, 0, 0);
+  stroke-width: 1px;
+} /*# sourceMappingURL=transicao.module.css.map */

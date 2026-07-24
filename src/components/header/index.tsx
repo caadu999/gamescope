@@ -16,17 +16,17 @@ export default function Header() {
 
       <nav>
         <ul>
-          <li className="hover:bg-white hover:text-[#141414]">
+          <li className="hover:bg-[white] hover:text-[#141414]">
             <Links href="/">Home</Links>
           </li>
-          <li className="hover:bg-white hover:text-[#141414]">
+          <li className="hover:bg-[white] hover:text-[#141414]">
             <Links href="/wishlist">Wishlist</Links>
           </li>
-          <li className="hover:bg-white hover:text-[#141414]">
-            <Links href="/jogos">Jogos</Links>
-          </li>
-          <li className="hover:bg-white hover:text-[#141414]">
+          <li className="hover:bg-[white] hover:text-[#141414]">
             <Links href="/sobre">Sobre</Links>
+          </li>
+          <li className="hover:bg-[white] hover:text-[#141414]">
+            <Links href="/jogos">Jogos</Links>
           </li>
         </ul>
       </nav>
@@ -40,7 +40,7 @@ const efeito = 0.025;
 const Links = ({ children, href }: { children: string; href: string }) => {
   return (
     <motion.a
-      className="relative block overflow-hidden whitespace-nowrap"
+      className="relative z-10 block overflow-hidden whitespace-nowrap"
       href={href}
       initial="initial"
       whileHover="hover"
@@ -71,7 +71,7 @@ const Links = ({ children, href }: { children: string; href: string }) => {
           );
         })}
       </div>
-      <div className="iset 0 absolute bg-blue-400">
+      <div className="absolute bg-blue-400">
         {children.split('').map((l, i) => {
           return (
             <motion.span

@@ -1,0 +1,29 @@
+.lista {
+  display: flex;
+  gap: 16px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container__card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.iconOrange {
+  background-color: #ff6d38;
+}
+
+.iconPurple {
+  background-color: #7a78ff;
+}
+
+.iconYellow {
+  background-color: #fdc317;
+} /*# sourceMappingURL=jogos.module.css.map */

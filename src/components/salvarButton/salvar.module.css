@@ -1,0 +1,19 @@
+.destaque__icons {
+  color: #fdf9f0;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #101014;
+  padding: 6px;
+  height: 58px;
+  width: 60px;
+  border-radius: 4px;
+  border: 1px solid rgba(128, 128, 128, 0.205);
+  transition: all 0.1s ease-in;
+}
+.destaque__icons:hover {
+  background-color: #fdf9f0;
+  color: #101014;
+  cursor: pointer;
+} /*# sourceMappingURL=salvar.module.css.map */
