@@ -32,7 +32,7 @@ export default function Salvar({ jogo }: JogoProps) {
   return (
     <button
       onClick={() => addWishlist()}
-      className="flex h-16 w-16 items-center justify-center rounded-md border-2 border-solid border-neutral-800 bg-[#101014] transition-all duration-200 ease-in hover:cursor-pointer hover:bg-[#fdf9f0] hover:text-[#101014]"
+      className="flex h-16 w-16 items-center justify-center rounded-full border-[1px] border-solid border-neutral-800 bg-black transition-all duration-200 ease-in hover:cursor-pointer hover:bg-[#fdf9f0] hover:text-[#101014] lg:mr-4"
     >
       {jaAdd ? <FaCheck size={20} /> : <FaBookmark size={20} />}
     </button>

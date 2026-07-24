@@ -15,7 +15,7 @@ export default async function Destaque() {
   const descricao = `${jogosDestaqueDetalhes.description_raw.substring(0, 180)}...`;
 
   return (
-    <section className="mb-6 mt-4 flex w-96 flex-col items-center rounded-xl bg-[#111111] p-4 md:w-3/4 lg:h-[400px] lg:w-[920px] lg:flex-row lg:gap-6 lg:p-4 xl:w-[1100px]">
+    <section className="mb-6 mt-4 flex w-96 flex-col items-center rounded-xl border-[1px] border-solid border-[#2e2e2e] bg-[#111111] p-4 md:w-3/4 lg:h-[400px] lg:w-[920px] lg:flex-row lg:gap-6 lg:p-4 xl:w-[1100px]">
       <div
         className="flex h-80 w-[100%] flex-col justify-between rounded-lg bg-cover bg-center p-4 lg:h-full lg:w-96"
         style={{

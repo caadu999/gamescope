@@ -9,7 +9,9 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <h1 className={oldschoolGrotesk.className}>
-        <Link href={'/'}>G</Link>
+        <Link href={'/'}>
+          <motion.span>G</motion.span>
+        </Link>
       </h1>
 
       <nav>
