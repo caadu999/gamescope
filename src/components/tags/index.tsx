@@ -6,5 +6,5 @@ type TagsProps = {
 };
 
 export default function Tags({ text }: TagsProps) {
-  return <li className={styles.lista}>{text.name}</li>;
+  return <li className={`${styles.lista} `}>{text.name}</li>;
 }

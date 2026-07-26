@@ -6,6 +6,7 @@ import { WishlistProvider } from '@/context/wishlistContext';
 import './globals.css';
 import Footer from '@/components/Footer';
 import { SmoothScroll } from '@/components/SmoothScroll';
+import Overlay from '@/components/overlay';
 
 const robFont = Roboto({
   subsets: ['latin'],
@@ -27,6 +28,7 @@ export default function RootLayout({
         <WishlistProvider>
           <SmoothScroll>
             <Header />
+            <Overlay />
             {children}
             <Footer />
           </SmoothScroll>

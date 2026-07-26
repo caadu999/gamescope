@@ -3,15 +3,15 @@ import {
   getJogosEmAlta,
   getLancamentos,
   getMaisBemAvaliados,
+  getJogoDestaque,
+  getDetalhes,
 } from '@/lib/API/API';
 import styles from '@/app/jogos//jogos.module.scss';
-import TituloHome from '@/components/tituloHome';
-import { FaRocket } from 'react-icons/fa';
 import { FaMedal } from 'react-icons/fa6';
-import { FaFireAlt } from 'react-icons/fa';
+import { FaFireAlt, FaRocket } from 'react-icons/fa';
 import Titulo from '@/components/titulo/titulo';
-import SearchInput from '@/components/searchInput';
-import CardFlutuante from '@/components/cardFlutuante/cardFlutuante';
+import { anton, suisse } from '../../../public/fonts/fonts';
+import Destaque from './destaque';
 
 export const revalidate = 3600;
 
@@ -22,15 +22,34 @@ export default async function Jogos() {
     getLancamentos(),
   ]);
 
+  const jogosDestaque = await getJogoDestaque();
+  const jogosDestaqueDetalhes = await getDetalhes(jogosDestaque.slug);
+
   return (
-    <div className={styles.container}>
-      <TituloHome text="Descubra novos jogos" />
-      <CardFlutuante className="left-2/4 top-8 z-30 hidden rounded-[50%] bg-[#ff6d38] p-3 md:absolute md:hidden lg:hidden">
-        <div>
-          <FaFireAlt size={40} />
+    <div className={`${styles.container}`}>
+      <div className="mb-10 mt-10 flex items-center justify-between pl-4 lg:mb-10 lg:mt-16 lg:w-[90%] xl:w-full">
+        <div className="flex flex-col gap-2 lg:w-80">
+          <span
+            className={`flex items-center gap-4 lg:text-sm ${suisse.className}`}
+          >
+            {' '}
+            <div className="h-[12px] w-[12px] rounded-full bg-gray-500">
+              {' '}
+            </div>{' '}
+            01 _
+          </span>
+          <h1
+            className={`text-[70px] font-bold leading-[90px] lg:text-[80px] lg:leading-[90px] ${anton.className}`}
+          >
+            CATÁLOGO <br /> DE JOGOS
+          </h1>
+          <p className={`w-[80%] lg:w-full lg:text-sm ${suisse.className}`}>
+            Explore nosso catálogo com milhares de jogos. Encontre sua próxima
+            aventura
+          </p>
         </div>
-      </CardFlutuante>
-      <SearchInput />
+        <Destaque jogo={jogosDestaqueDetalhes} />
+      </div>
 
       <div className={styles.container__card}>
         <Titulo

@@ -1,11 +1,13 @@
 import { GiConsoleController } from 'react-icons/gi';
-import { FaKeyboard } from 'react-icons/fa';
 import { MdVideogameAsset } from 'react-icons/md';
-import { FaHeart } from 'react-icons/fa';
+import {
+  FaHeart,
+  FaKeyboard,
+  FaArrowAltCircleRight,
+  FaCheck,
+} from 'react-icons/fa';
 import { oldschoolGrotesk } from '@/lib/fonts';
-import { FaArrowAltCircleRight } from 'react-icons/fa';
 import { IoExtensionPuzzle } from 'react-icons/io5';
-import { FaCheck } from 'react-icons/fa';
 import TituloHome from '@/components/tituloHome';
 import Transicao from '@/components/Transicao';
 

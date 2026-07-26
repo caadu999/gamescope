@@ -2,7 +2,6 @@
 
 import { easeInOut, motion, AnimatePresence, easeIn } from 'framer-motion';
 import { FaPlus } from 'react-icons/fa';
-
 import { useState } from 'react';
 import { geist } from '../../../../public/fonts/fonts';
 
@@ -31,7 +30,7 @@ export default function Accordion({ item }: ItemProps) {
       className={`flex w-96 cursor-pointer flex-col items-start gap-6 overflow-hidden rounded-[12px] border-[1px] border-solid border-[#5c5c5c] bg-black p-8 text-[#a0a0a0] lg:w-[860px] xl:w-[900px] ${geist.className}`}
 
       whileHover={{
-        color: '#ffffff',
+        color: '#d3d3d3',
       }}
 
       transition={{

@@ -1,20 +1,30 @@
+'use client';
+
 import { Results } from '@/types/types';
 import Link from 'next/link';
-
+import { MdOutlineArrowOutward } from 'react-icons/md';
 import Tags from '../tags';
 import { FaStar } from 'react-icons/fa';
 import { oldschoolGrotesk } from '@/lib/fonts';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 type CardProps = {
   jogo: Results;
 };
 
 export default function Card({ jogo }: CardProps) {
-  const tituloMenor = `${jogo.name.substring(0, 30)}...`;
+  const [isHover, setIsHover] = useState(false);
+  const tituloMenor = `${jogo.name.substring(0, 15)}...`;
 
   return (
-    <section className="flex w-24 flex-col justify-between rounded-lg bg-[#232323] md:w-full xl:h-96 xl:overflow-hidden">
+    <section
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
+
+      className="flex w-24 flex-col justify-between rounded-lg bg-[#232323] md:w-full xl:h-96 xl:overflow-hidden"
+    >
       <Link href={`/jogos/${jogo.slug}`}>
         <div className="relative h-40 overflow-hidden rounded-lg md:h-52 xl:rounded-none">
           <Image
@@ -22,16 +32,30 @@ export default function Card({ jogo }: CardProps) {
             src={jogo.background_image || '/placeholder.png'}
             alt={jogo.name}
             fill
-            quality={80}
+            quality={70}
           />
         </div>
       </Link>
-      <div className="flex h-full flex-col justify-between gap-2 xl:p-4">
-        <h1
-          className={`hidden w-[90%] text-[20px] xl:block ${oldschoolGrotesk.className}`}
-        >
-          {jogo.name.length >= 30 ? tituloMenor : jogo.name}
-        </h1>
+      <div className="relative flex h-full flex-col justify-between gap-2 xl:p-4">
+        <div className="flex items-center gap-2">
+          <motion.div
+            className="absolute"
+
+            animate={{
+              opacity: isHover ? 1 : 0,
+            }}
+          >
+            <MdOutlineArrowOutward />
+          </motion.div>
+          <motion.h1
+            animate={{
+              x: isHover ? 24 : 0,
+            }}
+            className={`hidden w-[90%] text-[20px] xl:block ${oldschoolGrotesk.className}`}
+          >
+            {jogo.name.length >= 15 ? tituloMenor : jogo.name}
+          </motion.h1>
+        </div>
         <p className="hidden items-center text-[20px] font-bold xl:inline-flex xl:gap-2">
           {' '}
           <FaStar size={20} color="#fdc317" />{' '}
