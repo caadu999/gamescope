@@ -39,7 +39,7 @@ export default function Card({ jogo }: CardProps) {
       <div className="relative flex h-full flex-col justify-between gap-2 xl:p-4">
         <div className="flex items-center gap-2">
           <motion.div
-            className="absolute"
+            className="absolute rounded-[2px] bg-[#0B0B0A] p-1 font-bold"
 
             animate={{
               opacity: isHover ? 1 : 0,
@@ -49,7 +49,7 @@ export default function Card({ jogo }: CardProps) {
           </motion.div>
           <motion.h1
             animate={{
-              x: isHover ? 24 : 0,
+              x: isHover ? 34 : 0,
             }}
             className={`hidden w-[90%] text-[20px] xl:block ${oldschoolGrotesk.className}`}
           >

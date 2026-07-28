@@ -1,6 +1,4 @@
-import { Geist } from 'next/font/google';
-import { VT323 } from 'next/font/google';
-import { Anton } from 'next/font/google';
+import { Geist, Anton, VT323 } from 'next/font/google';
 import localFont from 'next/font/local';
 
 export const geist = Geist({

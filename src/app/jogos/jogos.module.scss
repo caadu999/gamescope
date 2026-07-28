@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 98vw;
 
   &__card {
     display: flex;
@@ -15,14 +16,4 @@
     gap: 20px;
     margin-bottom: 32px;
   }
-}
-
-.iconOrange {
-  background-color: #ff6d38;
-}
-.iconPurple {
-  background-color: #7a78ff;
-}
-.iconYellow {
-  background-color: #fdc317;
 }

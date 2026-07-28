@@ -9,7 +9,7 @@ export const faqs = [
     id: 2,
     question: 'Como funciona a lista de desejos?',
     answer:
-      'A lista de desejos permite que os usuários salvem seus jogos favoritos para acessá-los posteriormente. Os jogos adicionados são armazenados no Local Storage do navegador, permitindo que a lista seja mantida mesmo após fechar ou atualizar a página.',
+      'A lista de desejos permite que você salve seus jogos favoritos para acessá-los posteriormente. Os jogos são armazenados no Local Storage do navegador, mantendo a lista mesmo após fechar ou atualizar a página.',
   },
   {
     id: 3,

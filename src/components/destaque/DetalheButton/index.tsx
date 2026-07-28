@@ -9,7 +9,7 @@ export default function DetalheButton() {
   const [isHover, setIsHover] = useState(false);
   return (
     <motion.button
-      className={`relative flex h-16 w-60 items-center justify-between gap-4 overflow-hidden rounded-full border-[1.9px] border-solid border-[#FF6D38] bg-black p-2 pl-5 pr-5 text-[20px] transition-all duration-200 ease-in md:rounded-full md:text-[26px] lg:text-[22px] ${oldschoolGrotesk.className}`}
+      className={`relative flex h-16 w-60 items-center justify-between gap-4 overflow-hidden rounded-full border-[1.9px] border-solid border-[#FF6D38] bg-[#080807] p-2 pl-5 pr-5 text-[20px] transition-all duration-200 ease-in md:rounded-full md:text-[26px] lg:text-[22px] ${oldschoolGrotesk.className}`}
       onHoverStart={() => setIsHover(true)}
       onHoverEnd={() => setIsHover(false)}
       whileHover={{

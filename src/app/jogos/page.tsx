@@ -10,7 +10,7 @@ import styles from '@/app/jogos//jogos.module.scss';
 import { FaMedal } from 'react-icons/fa6';
 import { FaFireAlt, FaRocket } from 'react-icons/fa';
 import Titulo from '@/components/titulo/titulo';
-import { anton, suisse } from '../../../public/fonts/fonts';
+import { anton, geist, suisse } from '../../../public/fonts/fonts';
 import Destaque from './destaque';
 
 export const revalidate = 3600;
@@ -27,7 +27,7 @@ export default async function Jogos() {
 
   return (
     <div className={`${styles.container}`}>
-      <div className="mb-10 mt-10 flex items-center justify-between pl-4 lg:mb-10 lg:mt-16 lg:w-[90%] xl:w-full">
+      <div className="mb-10 mt-10 flex items-center justify-between pl-4 lg:mb-10 lg:mt-16 lg:w-[90%] xl:w-[90%] xl:max-w-[1590px]">
         <div className="flex flex-col gap-2 lg:w-80">
           <span
             className={`flex items-center gap-4 lg:text-sm ${suisse.className}`}
@@ -39,11 +39,13 @@ export default async function Jogos() {
             01 _
           </span>
           <h1
-            className={`text-[70px] font-bold leading-[90px] lg:text-[80px] lg:leading-[90px] ${anton.className}`}
+            className={`text-[70px] font-bold leading-[90px] text-[#E8E8E3] lg:text-[80px] lg:leading-[90px] ${anton.className}`}
           >
             CATÁLOGO <br /> DE JOGOS
           </h1>
-          <p className={`w-[80%] lg:w-full lg:text-sm ${suisse.className}`}>
+          <p
+            className={`w-[80%] font-[600] text-[#938F8a] lg:w-full lg:text-lg ${geist.className}`}
+          >
             Explore nosso catálogo com milhares de jogos. Encontre sua próxima
             aventura
           </p>
@@ -55,7 +57,7 @@ export default async function Jogos() {
         <Titulo
           icon={<FaRocket size={34} />}
           text="Em alta"
-          className={styles.iconOrange}
+
           link="em-alta"
         />
         <ul className={styles.lista}>
@@ -68,10 +70,10 @@ export default async function Jogos() {
         <Titulo
           icon={<FaMedal size={34} />}
           text="Mais bem avaliados"
-          className={styles.iconPurple}
+
           link="melhores"
         />
-        <ul className={styles.lista}>
+        <ul className="flex gap-[16px]">
           {bemAval
             .map((jogo) => <Card key={jogo.id} jogo={jogo} />)
             .slice(0, 4)}
@@ -81,7 +83,7 @@ export default async function Jogos() {
         <Titulo
           icon={<FaFireAlt size={34} />}
           text="Lançamentos"
-          className={styles.iconYellow}
+
           link="lancamentos"
         />
         <ul className={styles.lista}>
