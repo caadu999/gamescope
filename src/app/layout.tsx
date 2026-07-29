@@ -7,6 +7,7 @@ import './globals.css';
 import Footer from '@/components/Footer';
 import { SmoothScroll } from '@/components/SmoothScroll';
 import Overlay from '@/components/overlay';
+import { ViewTransitions } from 'next-view-transitions';
 
 const robFont = Roboto({
   subsets: ['latin'],
@@ -23,17 +24,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={robFont.className}>
-        <WishlistProvider>
-          <SmoothScroll>
-            <Header />
-            <Overlay />
-            {children}
-            <Footer />
-          </SmoothScroll>
-        </WishlistProvider>
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <body className={robFont.className}>
+          <WishlistProvider>
+            <SmoothScroll>
+              <Header />
+              <Overlay />
+              {children}
+              <Footer />
+            </SmoothScroll>
+          </WishlistProvider>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

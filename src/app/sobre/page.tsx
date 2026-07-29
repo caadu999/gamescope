@@ -9,14 +9,12 @@ import {
 import { oldschoolGrotesk } from '@/lib/fonts';
 import { IoExtensionPuzzle } from 'react-icons/io5';
 import TituloHome from '@/components/tituloHome';
-import Transicao from '@/components/Transicao';
 
 import Link from 'next/link';
 
 export default function Sobre() {
   return (
     <>
-      <Transicao />
       <div className="min-h-[calc(100vh - 80px)] flex flex-col items-center p-4 text-[#fdf9f0]">
         <div className="flex flex-col items-center">
           <TituloHome text="Sobre o Gamescope"></TituloHome>

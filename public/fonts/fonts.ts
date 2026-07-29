@@ -1,9 +1,15 @@
 import { Geist, Anton, VT323 } from 'next/font/google';
 import localFont from 'next/font/local';
+import { Great_Vibes } from 'next/font/google';
 
 export const geist = Geist({
   subsets: ['latin'],
   display: 'swap',
+});
+export const great = Great_Vibes({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: '400',
 });
 
 export const anton = Anton({

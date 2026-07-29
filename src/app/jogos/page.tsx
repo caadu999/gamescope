@@ -26,8 +26,8 @@ export default async function Jogos() {
   const jogosDestaqueDetalhes = await getDetalhes(jogosDestaque.slug);
 
   return (
-    <div className={`${styles.container}`}>
-      <div className="mb-10 mt-10 flex items-center justify-between pl-4 lg:mb-10 lg:mt-16 lg:w-[90%] xl:w-[90%] xl:max-w-[1590px]">
+    <div className="flex w-[99vw] flex-col items-center justify-center">
+      <div className="mb-10 mt-10 flex items-center justify-between overflow-y-auto pl-4 lg:mb-10 lg:mt-16 lg:w-[90%] xl:w-[90%] xl:max-w-[1590px]">
         <div className="flex flex-col gap-2 lg:w-80">
           <span
             className={`flex items-center gap-4 lg:text-sm ${suisse.className}`}
