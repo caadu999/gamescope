@@ -1,7 +1,7 @@
 'use client';
 
 import { Results } from '@/types/types';
-import Link from 'next/link';
+
 import { MdOutlineArrowOutward } from 'react-icons/md';
 import Tags from '../tags';
 import { FaStar } from 'react-icons/fa';
@@ -25,17 +25,16 @@ export default function Card({ jogo }: CardProps) {
 
       className="flex w-24 flex-col justify-between rounded-lg bg-[#232323] md:w-full xl:h-96 xl:overflow-hidden"
     >
-      <Link href={`/jogos/${jogo.slug}`}>
-        <div className="relative h-40 overflow-hidden rounded-lg md:h-52 xl:rounded-none">
-          <Image
-            className="object-cover transition-all duration-200 ease-in hover:scale-125"
-            src={jogo.background_image || '/placeholder.png'}
-            alt={jogo.name}
-            fill
-            quality={70}
-          />
-        </div>
-      </Link>
+      <div className="relative h-40 overflow-hidden rounded-lg md:h-52 xl:rounded-none">
+        <Image
+          className="object-cover transition-all duration-200 ease-in hover:scale-125"
+          src={jogo.background_image || '/placeholder.png'}
+          alt={jogo.name}
+          fill
+          quality={70}
+        />
+      </div>
+
       <div className="relative flex h-full flex-col justify-between gap-2 xl:p-4">
         <div className="flex items-center gap-2">
           <motion.div

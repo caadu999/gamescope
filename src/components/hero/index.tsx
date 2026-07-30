@@ -28,7 +28,9 @@ export default function Hero() {
       </CardFlutuante>
       <SearchInput />
 
-      <Destaque />
+      <div className="mb-10 mt-6">
+        <Destaque />
+      </div>
     </section>
   );
 }

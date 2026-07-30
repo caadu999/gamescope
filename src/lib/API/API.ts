@@ -57,6 +57,18 @@ export async function getJogoSlug(slug: string) {
   const res = await APIURL.get<Detalhes>(`games/${slug}`);
   return res.data;
 }
+export async function getJogoId(id: number) {
+  const res = await fetch(
+    `https://api.rawg.io/api/games/${id}?key=${process.env.API_KEY}`,
+  );
+
+  if (!res.ok) {
+    throw new Error('Erro ao buscar jogo');
+  }
+
+  const data: Detalhes = await res.json();
+  return data;
+}
 
 export async function getScreenshots(slug: string) {
   const res = await APIURL.get<ScreenshotData>(`/games/${slug}/screenshots`);

@@ -1,30 +1,8 @@
-import Card from '@/components/jogoCard';
-import {
-  getJogosEmAlta,
-  getLancamentos,
-  getMaisBemAvaliados,
-  getJogoDestaque,
-  getDetalhes,
-} from '@/lib/API/API';
-import styles from '@/app/jogos//jogos.module.scss';
-import { FaMedal } from 'react-icons/fa6';
-import { FaFireAlt, FaRocket } from 'react-icons/fa';
-import Titulo from '@/components/titulo/titulo';
 import { anton, geist, suisse } from '../../../public/fonts/fonts';
 import Destaque from './destaque';
+import Categoria from './categoria';
 
-export const revalidate = 3600;
-
-export default async function Jogos() {
-  const [jogosEmAlta, bemAval, lancamentos] = await Promise.all([
-    getJogosEmAlta(),
-    getMaisBemAvaliados(),
-    getLancamentos(),
-  ]);
-
-  const jogosDestaque = await getJogoDestaque();
-  const jogosDestaqueDetalhes = await getDetalhes(jogosDestaque.slug);
-
+export default function Jogos() {
   return (
     <div className="flex w-[99vw] flex-col items-center justify-center">
       <div className="mb-10 mt-10 flex items-center justify-between overflow-y-auto pl-4 lg:mb-10 lg:mt-16 lg:w-[90%] xl:w-[90%] xl:max-w-[1590px]">
@@ -50,48 +28,9 @@ export default async function Jogos() {
             aventura
           </p>
         </div>
-        <Destaque jogo={jogosDestaqueDetalhes} />
+        <Destaque />
       </div>
-
-      <div className={styles.container__card}>
-        <Titulo
-          icon={<FaRocket size={34} />}
-          text="Em alta"
-
-          link="em-alta"
-        />
-        <ul className={styles.lista}>
-          {jogosEmAlta
-            .map((jogo) => <Card key={jogo.id} jogo={jogo} />)
-            .slice(0, 4)}
-        </ul>
-      </div>
-      <div className={styles.container__card}>
-        <Titulo
-          icon={<FaMedal size={34} />}
-          text="Mais bem avaliados"
-
-          link="melhores"
-        />
-        <ul className="flex gap-[16px]">
-          {bemAval
-            .map((jogo) => <Card key={jogo.id} jogo={jogo} />)
-            .slice(0, 4)}
-        </ul>
-      </div>
-      <div className={styles.container__card}>
-        <Titulo
-          icon={<FaFireAlt size={34} />}
-          text="Lançamentos"
-
-          link="lancamentos"
-        />
-        <ul className={styles.lista}>
-          {lancamentos
-            .map((jogo) => <Card key={jogo.id} jogo={jogo} />)
-            .slice(0, 4)}
-        </ul>
-      </div>
+      <Categoria />
     </div>
   );
 }

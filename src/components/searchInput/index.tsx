@@ -44,8 +44,11 @@ export default function SearchInput() {
         whileHover={{
           backgroundColor: '#181818',
         }}
+
+        initial={false}
       >
         <motion.p
+          initial={false}
           animate={{
             y: isHover ? '-120%' : 0,
           }}
@@ -59,6 +62,7 @@ export default function SearchInput() {
           BUSCAR
         </motion.p>
         <motion.p
+          initial={false}
           animate={{
             y: isHover ? 0 : '120%',
           }}
@@ -78,7 +82,7 @@ export default function SearchInput() {
             scaleX: isHover ? 1 : 0.8,
           }}
 
-          initial={{}}
+          initial={false}
 
           transition={{
             duration: 0.24,

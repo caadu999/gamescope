@@ -6,9 +6,19 @@ import { motion } from 'framer-motion';
 import { useTransitionRouter } from 'next-view-transitions';
 import { rotas } from './data';
 import { useState } from 'react';
+import { useContext } from 'react';
+import { CardContext } from '@/context/cardContext';
 
 export default function Header() {
   const router = useTransitionRouter();
+
+  const context = useContext(CardContext);
+
+  if (!context) {
+    throw new Error('Erro');
+  }
+
+  const { setIsOpen } = context;
 
   const [isHover, setIsHover] = useState<string | null>(null);
 
@@ -57,7 +67,6 @@ export default function Header() {
           <span>G</span>
         </a>
       </h1>
-
       <nav>
         <ul className="flex items-center justify-center gap-3 font-bold">
           {rotas.map((item) => (
@@ -67,6 +76,12 @@ export default function Header() {
               onMouseLeave={() => setIsHover(null)}
               onClick={(e) => {
                 e.preventDefault();
+
+                if (item.id === 'sobre') {
+                  setIsOpen(true);
+                  return;
+                }
+
                 router.push(item.url, {
                   onTransitionReady: slideInOut,
                 });
