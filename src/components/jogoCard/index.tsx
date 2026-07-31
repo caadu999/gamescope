@@ -38,7 +38,7 @@ export default function Card({ jogo }: CardProps) {
           />
         </div>
 
-        <div className="relative hidden  lg:flex flex-col justify-between gap-2 lg:h-full xl:p-4">
+        <div className="relative hidden flex-col justify-between gap-2 lg:flex lg:h-full xl:p-4">
           <div className="flex items-center gap-2">
             <div className="flex h-[40px] w-full flex-col overflow-hidden">
               <motion.h1

@@ -56,7 +56,9 @@ export default async function Detalhes({ params }: Props) {
                 {detalhes.released.slice(0, 4)}
               </p>
               <div className="h-3 w-3 rounded-full bg-gray-500"></div>
-              <p className="text-[19px] font-[800]">{detalhes.rating ? detalhes.rating : 'S/N'}</p>
+              <p className="text-[19px] font-[800]">
+                {detalhes.rating ? detalhes.rating : 'S/N'}
+              </p>
               <div className="h-3 w-3 rounded-full bg-gray-500"></div>
               <p className="text-[19px] font-[800]">
                 {detalhes.publishers[0].name}
