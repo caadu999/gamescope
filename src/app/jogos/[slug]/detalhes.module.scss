@@ -5,13 +5,8 @@
   margin-top: 60px;
   align-items: center;
   gap: 40px;
-  width: 1200px;
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  color: #fdf9f0;
+  width: 100%;
+  color: #e8e8e3;
 
   h1 {
     font-size: 4em;
@@ -21,13 +16,14 @@
 
   &__containerTop {
     display: flex;
-    gap: 24px;
+    gap: 28px;
+    width: 80%;
   }
 
   &__img {
     position: relative;
-    border-radius: 8px;
-    width: 360px;
+    border-radius: 4px;
+    width: 500px;
     height: 300px;
 
     overflow: hidden;
@@ -57,7 +53,6 @@
     gap: 12px;
     height: 60px;
     font-size: 1.1em;
-    font-weight: bold;
     align-items: center;
     transition: all 0.1s ease-in;
 
@@ -76,7 +71,6 @@
     justify-content: center;
     width: 80px;
     padding: 4px 16px;
-    font-weight: bold;
     background-color: #161616;
     border-radius: 4px;
     gap: 8px;
@@ -106,40 +100,21 @@
     padding: 4px 16px;
     border-radius: 6px;
     color: #141414;
-    font-weight: bolder;
     font-size: 1.1em;
   }
 }
 
 .detalhes__listaPub {
   display: flex;
-
-  li {
-    font-weight: bold;
-  }
 }
 
 .sobre {
   display: flex;
-
-  height: 440px;
   margin-bottom: 20px;
-  width: 1090px;
-
+  width: 80%;
   border-radius: 12px;
   gap: 20px;
-
-  h2 {
-    font-size: 3.4em;
-    font-weight: bolder;
-  }
-
-  p {
-    color: #141414;
-    font-weight: bold;
-    font-size: 1.1em;
-  }
-
+  justify-content: space-between;
   &__mainImg {
     position: relative;
     width: 100%;
@@ -163,7 +138,7 @@
 
     p {
       color: #141414;
-      font-weight: bolder;
+
       font-size: 6em;
     }
   }
@@ -171,25 +146,9 @@
   &__esq {
     display: flex;
     flex-direction: column;
-    width: 50%;
-    background-color: #7a78ff;
-    color: #141414;
+    color: #938f8a;
     border-radius: 16px;
-    padding: 20px 30px;
     gap: 8px;
-
-    p {
-      width: 80%;
-    }
-  }
-
-  &__dir {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    width: 50%;
-    border-radius: 12px;
-    overflow: hidden;
   }
 }
 

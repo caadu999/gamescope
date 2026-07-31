@@ -1,20 +1,22 @@
 'use client';
 import { WishListContext } from '@/context/wishlistContext';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { Results } from '@/types/types';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaArrowAltCircleRight } from 'react-icons/fa';
-import { FaStar } from 'react-icons/fa';
 import Tags from '../tags';
 import { oldschoolGrotesk } from '@/lib/fonts';
+import { geist } from '../../../public/fonts/fonts';
+import { motion } from 'framer-motion';
+import { GoArrowUpLeft } from 'react-icons/go';
 
 type CardProps = {
   jogo: Results;
 };
 
 export default function CardWishlist({ jogo }: CardProps) {
+  const [isHover, setIsHover] = useState(false);
   const context = useContext(WishListContext);
 
   if (!context) {
@@ -32,7 +34,7 @@ export default function CardWishlist({ jogo }: CardProps) {
   const nome = jogo.name.substring(0, 30) + '...';
 
   return (
-    <div className="flex h-52 w-[90vw] items-center justify-between rounded-xl border-[1px] border-solid border-[#252525] bg-[#111111] p-4 md:gap-4 lg:h-56 lg:w-[840px] lg:justify-normal lg:gap-4">
+    <div className="flex h-52 w-[90vw] items-center justify-between rounded-md border-[1px] border-solid border-[#252525] bg-[#111111] p-4 md:gap-4 lg:h-56 lg:w-[840px] lg:justify-normal lg:gap-4">
       <div className="relative h-44 w-36 overflow-hidden rounded-lg md:w-44 lg:h-48 lg:w-44">
         <Image
           className="object-cover"
@@ -51,31 +53,71 @@ export default function CardWishlist({ jogo }: CardProps) {
               {jogo.name.length > 30 ? nome : jogo.name}
             </h1>
             <button
-              className="hidden rounded-lg border-[1px] border-solid border-[#434141] p-4 md:flex"
+              className="hidden h-12 w-12 items-center justify-center rounded-lg border-[1px] border-solid border-[#434141] md:flex"
               onClick={() => handleRemove(jogo.id)}
             >
-              <FaRegTrashAlt className="" size={30} />
+              <FaRegTrashAlt className="" size={20} />
             </button>
           </div>
-          <div className="flex gap-2">
-            {jogo.genres.map((genero) => (
-              <Tags text={genero} key={jogo.id} />
-            ))}
-          </div>
+          <p>
+            {jogo.rating} <span className="text-base font-normal">/ 5.0</span>
+          </p>
         </div>
         <div className="flex w-full items-center justify-between">
           <div className="hidden items-center gap-2 font-bold md:flex lg:text-2xl">
-            <FaStar size={24} />
-            <p>
-              {jogo.rating} <span className="text-base font-normal">/ 5.0</span>
-            </p>
+            <div className="flex gap-2">
+              {jogo.genres.slice(0, 3).map((genero) => (
+                <Tags text={genero} key={jogo.id} />
+              ))}
+            </div>
           </div>
           <Link
+            onMouseEnter={() => setIsHover(true)}
+            onMouseLeave={() => setIsHover(false)}
             href={`/jogos/${jogo.slug}`}
-            className="flex w-44 items-center justify-between rounded-lg bg-[#C2F34E] px-4 py-2 font-bold text-[#141414] md:w-40 lg:w-52"
+            className={`relative flex h-10 w-44 items-center justify-center gap-4 overflow-hidden whitespace-nowrap rounded-[4px] bg-[#E8E8E3] px-[10px] py-[10px] text-[20px] font-bold text-[#141414] ${geist.className}`}
           >
-            <span>Saiba Mais</span>
-            <FaArrowAltCircleRight size={35} />
+            <motion.div
+              initial={false}
+              animate={{
+                y: isHover ? 0 : 30,
+              }}
+              transition={{
+                duration: 0.15,
+              }}
+
+              className="absolute left-0 ml-3"
+            >
+              Ver jogo
+            </motion.div>
+            <motion.div
+              animate={{
+                y: isHover ? -50 : 0,
+              }}
+              transition={{
+                duration: 0.15,
+              }}
+              className="absolute left-0 ml-3"
+            >
+              Ver jogo
+            </motion.div>
+
+            <motion.div
+              animate={{
+                scale: isHover ? 0.9 : 1,
+              }}
+
+              className="absolute right-0 mr-2 flex h-7 w-7 items-center overflow-hidden rounded-[2px] bg-[#141414] object-contain p-2 text-white"
+            >
+              <motion.p
+                animate={{
+                  translateX: isHover ? -17 : 0,
+                  translateY: isHover ? -17 : 0,
+                }}
+              >
+                <GoArrowUpLeft size={30} strokeWidth={3} />
+              </motion.p>
+            </motion.div>
           </Link>
         </div>
       </div>

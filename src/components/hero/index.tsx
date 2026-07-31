@@ -28,7 +28,7 @@ export default function Hero() {
       </CardFlutuante>
       <SearchInput />
 
-      <div className="mb-10 mt-6">
+      <div className="mb-10 mt-6 flex items-center w-full justify-center">
         <Destaque />
       </div>
     </section>

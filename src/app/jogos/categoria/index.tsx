@@ -18,7 +18,7 @@ export default async function Categoria() {
   ]);
 
   return (
-    <div>
+    <div className="flex flex-col lg:w-[84%]">
       <div className="mb-[20px] flex flex-col">
         <Titulo icon={<FaRocket size={34} />} text="Em alta" link="em-alta" />
         <ul className="flex gap-[16px]">

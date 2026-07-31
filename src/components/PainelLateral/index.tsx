@@ -25,19 +25,19 @@ export default function PainelLateral() {
           clipPath: 'inset(0 0 0 100%)',
         }}
         transition={{ duration: 0.5, ease: 'easeInOut' }}
-        className={`fixed right-0 top-0 z-[9999] flex h-full w-[50%] flex-col justify-between gap-6 bg-[#E8E8E3] px-7 py-8 text-[#141414] ${geist.className}`}
+        className={`fixed right-0 top-0 z-[9999] flex h-full w-full flex-col justify-between gap-6 bg-[#E8E8E3] px-7 py-8 text-[#141414] xl:w-[50%] ${geist.className}`}
       >
         <div className="flex flex-col gap-8">
           <div className="flex h-fit w-full items-center justify-between gap-4 font-bold">
             <div className="flex items-center gap-3">
               <div className="h-4 w-4 rounded-full bg-gray-600"></div>
-              <p className="text-[20px]">Sobre</p>
+              <p className="text-[20px] xl:text-[22px]">Sobre</p>
             </div>
             <button
               onClick={() => setIsOpen(false)}
               onMouseEnter={() => setIsHover(true)}
               onMouseLeave={() => setIsHover(false)}
-              className={`relative flex h-10 items-center justify-center overflow-hidden whitespace-nowrap rounded-[3px] bg-[#141414] px-[10px] py-[10px] text-[20px] font-bold text-[#E8E8E3] lg:w-36 ${geist.className}`}
+              className={`relative flex h-10 w-36 items-center justify-center overflow-hidden whitespace-nowrap rounded-[3px] bg-[#141414] px-[10px] py-[10px] text-[20px] font-bold text-[#E8E8E3] ${geist.className}`}
             >
               <motion.div
                 initial={false}
@@ -79,7 +79,22 @@ export default function PainelLateral() {
               </motion.div>
             </button>
           </div>
-          <p className="w-[84%] text-[23px] font-[500] leading-7">
+          <motion.p
+            initial={{
+              clipPath: 'inset(0 0 100% 0)',
+            }}
+            animate={{
+              clipPath: isOpen ? 'inset(0 0 0 0)' : 'inset(0 0 100% 0)',
+            }}
+
+            transition={{
+              delay: 0.2,
+              duration: 1,
+              ease: easeIn,
+            }}
+
+            className="w-[84%] text-[23px] font-[500] leading-7 xl:text-[26px]"
+          >
             O Gamescope existe para aproximar pessoas dos jogos que realmente
             importam para elas. Em vez de transformar a descoberta em uma lista
             infinita de resultados, organizamos cada coleção para que explorar
@@ -90,7 +105,7 @@ export default function PainelLateral() {
             construída para explorar, descobrir e acompanhar o universo dos
             games através de uma interface moderna, limpa e focada no que
             realmente importa: os jogos.
-          </p>
+          </motion.p>
         </div>
         <div
           className={`flex w-full items-baseline justify-between text-[12px] text-[#6b645c] ${suisse.className}`}

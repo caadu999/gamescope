@@ -38,7 +38,7 @@ export default function SearchInput() {
       />
 
       <motion.button
-        className={`relative flex h-14 w-36 items-center justify-center gap-4 overflow-hidden rounded-full border-[1.9px] border-solid border-[#CACACA] bg-[#080807] p-2 pl-5 pr-5 text-[20px] font-[700] transition-all duration-200 ease-in md:rounded-full md:text-[26px] lg:h-14 lg:w-32 lg:text-[20px] ${geist.className}`}
+        className={`relative flex h-14 w-36 items-center justify-center gap-4 overflow-hidden rounded-full border-[1.9px] border-solid border-[#CACACA] bg-[#080807] p-2 pl-5 pr-5 text-[20px] font-[700] transition-all duration-200 ease-in md:rounded-full md:text-[26px] lg:h-12 lg:w-32 lg:text-[20px] ${geist.className}`}
         onHoverStart={() => setIsHover(true)}
         onHoverEnd={() => setIsHover(false)}
         whileHover={{

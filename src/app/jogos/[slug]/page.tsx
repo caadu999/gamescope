@@ -1,10 +1,9 @@
 import { getJogoSlug, getScreenshots } from '@/lib/API/API';
 import styles from '@/app/jogos/[slug]/detalhes.module.scss';
-import Tags from '@/components/tags';
 import { oldschoolGrotesk } from '@/lib/fonts';
-import { FaPlay } from 'react-icons/fa';
 import Salvar from '@/components/salvarButton/salvar';
 import Image from 'next/image';
+import { suisse, geist } from '../../../../public/fonts/fonts';
 
 type Props = {
   params: Promise<{
@@ -51,56 +50,62 @@ export default async function Detalhes({ params }: Props) {
         <div className={styles.detalhes__title}>
           <div className={styles.detalhes__titles}>
             <h1 className={oldschoolGrotesk.className}>{detalhes?.name}</h1>
-            <ul className={styles.detalhes__lista}>
-              {detalhes.genres.map((genre) => (
-                <Tags key={genre.id} text={genre} />
-              ))}
-            </ul>
+            <div className={`flex items-center gap-4 ${geist.className}`}>
+              <div className="h-3 w-3 rounded-full bg-gray-500"></div>
+              <p className="text-[19px] font-[800]">
+                {detalhes.released.slice(0, 4)}
+              </p>
+              <div className="h-3 w-3 rounded-full bg-gray-500"></div>
+              <p className="text-[19px] font-[800]">{detalhes.rating ? detalhes.rating : 'S/N'}</p>
+              <div className="h-3 w-3 rounded-full bg-gray-500"></div>
+              <p className="text-[19px] font-[800]">
+                {detalhes.publishers[0].name}
+              </p>
+            </div>
           </div>
           <div className={styles.detalhes__buttons}>
             <Salvar jogo={detalhes} />
-            <div className={styles.detalhes__icons}>
-              <FaPlay size={20} />
-              <span>Jogar</span>
-            </div>
           </div>
         </div>
       </div>
 
       <div className={styles.sobre}>
-        <div className={styles.sobre__esq}>
-          <h2 className={oldschoolGrotesk.className}>Sobre o jogo</h2>
-          <p>
+        <div className={`${styles.sobre__esq} w-[50%]`}>
+          <h2 className={`text-[22px] ${suisse.className}`}>SOBRE</h2>
+          <p className={`${geist.className} w-[80%] text-[20px] font-medium`}>
             {detalhes.description_raw.length > 400
               ? descricaoLimit
               : detalhes.description_raw}
           </p>
         </div>
-
-        <div className={styles.sobre__dir}>
-          <div className={styles.sobre__mainImg}>
-            <Image
-              src={fotosLimit[0]?.image || '/placeholder.png'}
-              alt="Screenshot principal"
-              fill
-            />
-          </div>
-          <div className={styles.container}>
-            <div className={styles.imgEsq}>
-              <Image
-                src={fotosLimit[1]?.image || '/placeholder.png'}
-                alt="Screenshot"
-                fill
-              />
-            </div>
-            <div className={styles.imgDir}>
-              <Image
-                src={fotosLimit[2]?.image || '/placeholder.png'}
-                alt="Screenshot"
-                fill
-              />
-            </div>
-          </div>
+      </div>
+      <div className="mb-6 flex w-[80%] flex-wrap items-center justify-between gap-6">
+        <div className="relative overflow-hidden rounded-sm xl:h-[270px] xl:w-[460px]">
+          <Image
+            src={fotosLimit[0]?.image || '/placeholder.png'}
+            fill
+            quality={70}
+            alt={detalhes.name}
+            className="object-cover"
+          ></Image>
+        </div>
+        <div className="relative overflow-hidden rounded-sm xl:h-[270px] xl:w-[460px]">
+          <Image
+            src={fotosLimit[1]?.image || '/placeholder.png'}
+            fill
+            quality={70}
+            alt={detalhes.name}
+            className="object-cover"
+          ></Image>
+        </div>
+        <div className="rounded-sms relative overflow-hidden xl:h-[270px] xl:w-[460px]">
+          <Image
+            src={fotosLimit[2]?.image || '/placeholder.png'}
+            fill
+            quality={70}
+            alt={detalhes.name}
+            className="object-cover"
+          ></Image>
         </div>
       </div>
     </section>

@@ -1,12 +1,12 @@
-import styles from '@/components/destaque/destaque.module.scss';
 import { getDetalhes, getJogoDestaque } from '@/lib/API/API';
 import Link from 'next/link';
-import Tags from '../tags';
-import { FaStar, FaTrophy } from 'react-icons/fa';
+import { PiStarFourFill } from 'react-icons/pi';
+
 import { oldschoolGrotesk } from '@/lib/fonts';
 import Salvar from '../salvarButton/salvar';
 import { suisse } from '../../../public/fonts/fonts';
 import { CursorFollow } from './cursorHover';
+import { geist } from '../../../public/fonts/fonts';
 
 export default async function Destaque() {
   const jogosDestaque = await getJogoDestaque();
@@ -24,14 +24,9 @@ export default async function Destaque() {
               backgroundImage: `url(${jogosDestaque.background_image})`,
             }}
           >
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#ffc412] p-2">
-              <FaTrophy size={40} color="#16181C" />
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#161513] p-2">
+              <PiStarFourFill size={40} color="#D2D2CD" />
             </div>
-            <ul className={styles.destaque__lista}>
-              {jogosDestaque.genres.map((genre) => (
-                <Tags text={genre} key={genre.id} />
-              ))}
-            </ul>
           </div>
           <div className="flex w-[100%] flex-col justify-center gap-4 overflow-hidden p-4 lg:h-full lg:w-5/6 lg:justify-between lg:p-0 2xl:h-full">
             <div className="flex flex-col gap-2">
@@ -39,7 +34,7 @@ export default async function Destaque() {
                 DESTAQUE
               </p>
               <h2
-                className={`mt-4 w-[90%] border-b-[1px] border-dotted border-[#434141] pb-2 text-3xl lg:mt-0 lg:pb-3 lg:text-5xl ${oldschoolGrotesk.className}`}
+                className={`mt-4 w-[90%] border-b-[1px] border-dotted border-[#434141] pb-2 text-3xl text-[#E8E8E3] lg:mt-0 lg:pb-3 lg:text-5xl ${oldschoolGrotesk.className}`}
               >
                 {jogosDestaqueDetalhes.name}
               </h2>
@@ -49,15 +44,18 @@ export default async function Destaque() {
             >
               {descricao}
             </p>
-            <div className="flex items-end justify-between gap-8 lg:w-full">
-              <div className="hidden gap-3 text-3xl font-bold lg:flex lg:items-center lg:justify-center">
-                <FaStar size={30} />
-                <span>
-                  {jogosDestaqueDetalhes.rating}
-                  <span className="text-[1.4rem] font-normal"> / 5.0</span>
-                </span>
-              </div>
-              <div className="flex gap-2">
+            <div className="flex items-center justify-between gap-4 lg:w-full">
+              <ul className={`hidden gap-4 lg:flex ${geist.className}`}>
+                {jogosDestaque.genres.slice(0, 3).map((genre) => (
+                  <li
+                    key={genre.id}
+                    className="rounded-[3px] bg-[#E8E8E3] px-4 py-1 text-[18px] font-bold text-[#141414]"
+                  >
+                    {genre.name}
+                  </li>
+                ))}
+              </ul>
+              <div>
                 <Salvar jogo={jogosDestaque} />
               </div>
             </div>
