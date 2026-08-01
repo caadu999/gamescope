@@ -1,20 +1,4 @@
 .container {
-  color: #fdf9f0;
-  h1 {
-    span {
-      color: #bdfb84;
-    }
-  }
-
-  p {
-    margin-bottom: 40px;
-  }
-  &__back {
-    margin-top: 60px;
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 0.9em;
-    font-weight: bold;
-  }
+  color: #e8e8e3;
+  margin-top: 64px;
 }

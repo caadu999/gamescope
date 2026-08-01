@@ -73,7 +73,7 @@ export default async function Detalhes({ params }: Props) {
             <p className="font-regular text-[#bbbbbb]">(ANO)</p>
             <div className="h-2 w-2 rounded-full bg-[#FF643D]"></div>
             <p className="text-[16px] font-[800] lg:text-[19px]">
-              {detalhes.released.slice(0, 4)}
+              {detalhes.released?.slice(0, 4)}
             </p>
           </div>
 
@@ -81,7 +81,7 @@ export default async function Detalhes({ params }: Props) {
             <p className="font-regular text-[#bbbbbb]">(NOTA)</p>
             <div className="h-2 w-2 rounded-full bg-[#FF643D]"></div>
             <p className="text-[16px] font-[800] lg:text-[19px]">
-              {detalhes.rating ? detalhes.rating : 'S/N'}
+              {detalhes.rating ? detalhes?.rating : 'S/N'}
             </p>
           </div>
 
@@ -89,7 +89,7 @@ export default async function Detalhes({ params }: Props) {
             <p className="font-regular text-[#bbbbbb]">(PUBLISHER)</p>
             <div className="h-2 w-2 rounded-full bg-[#FF643D]"></div>
             <p className="text-[16px] font-[800] lg:text-[19px]">
-              {detalhes.publishers[0].name}
+              {detalhes.publishers[0]?.name}
             </p>
           </div>
         </div>

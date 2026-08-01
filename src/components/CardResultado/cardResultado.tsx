@@ -1,11 +1,9 @@
 import { Results } from '@/types/types';
 import styles from '@/components/CardResultado/cardResultado.module.scss';
 import Image from 'next/image';
-import Link from 'next/link';
+import ResultButton from '@/app/search/SearchBotao';
 import Tags from '../tags';
-import { FaArrowAltCircleRight } from 'react-icons/fa';
 import { oldschoolGrotesk } from '@/lib/fonts';
-import { FaStar } from 'react-icons/fa';
 import { getDetalhes } from '@/lib/API/API';
 
 type Props = {
@@ -15,7 +13,7 @@ type Props = {
 export default async function CardResultado({ jogo }: Props) {
   const nome = jogo.name.substring(0, 43) + '...';
   const detalhes = await getDetalhes(jogo.slug);
-  const ratingSlice = jogo.genres.slice(0, 3);
+  const ratingSlice = jogo.genres.slice(0, 1);
 
   const descricao = detalhes.description_raw.substring(0, 80) + '...';
 
@@ -41,25 +39,19 @@ export default async function CardResultado({ jogo }: Props) {
                 : detalhes.description_raw}
             </p>
           </div>
-          <div className="inline-flex gap-2">
+          <div className="hidden w-fit gap-2 lg:inline-flex">
             {jogo.genres.length > 0 ? (
               ratingSlice.map((genre) => <Tags text={genre} key={genre.id} />)
             ) : (
-              <p className="bg-[#141414] font-bold xl:w-4 xl:rounded-lg xl:px-4 xl:py-2">
+              <p className="w-fit font-bold xl:w-4 xl:rounded-lg xl:px-4 xl:py-2">
                 S/N
               </p>
             )}
           </div>
         </div>
-        <div className={styles.container__interacoes}>
-          <div className={styles.container__nota}>
-            <FaStar size={30} />
-            <span>{jogo.rating ? jogo.rating : 'S/A'}</span>
-          </div>
-          <Link href={`jogos/${jogo.slug}`} className={styles.button}>
-            <FaArrowAltCircleRight size={40} />
-            <span>Saiba Mais</span>
-          </Link>
+
+        <div className="flex w-full items-end">
+          <ResultButton jogo={jogo} />
         </div>
       </div>
     </div>

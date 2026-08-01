@@ -85,7 +85,7 @@ export default function NotFound() {
             scale: isHover ? 0.9 : 1,
           }}
 
-          className="absolute right-0 mr-2 flex h-7 w-7 items-center rounded-[2px] bg-[#141414] object-contain p-2 text-white"
+          className="absolute right-0 mr-2 flex h-7 w-7 items-center overflow-hidden rounded-[2px] bg-[#141414] object-contain p-2 text-white"
         >
           <motion.p
             animate={{
