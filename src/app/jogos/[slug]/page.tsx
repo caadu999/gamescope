@@ -4,6 +4,7 @@ import { oldschoolGrotesk } from '@/lib/fonts';
 import Salvar from '@/components/salvarButton/salvar';
 import Image from 'next/image';
 import { suisse, geist } from '../../../../public/fonts/fonts';
+import { anton } from '../../../../public/fonts/fonts';
 
 type Props = {
   params: Promise<{
@@ -34,54 +35,68 @@ export default async function Detalhes({ params }: Props) {
   const fotos = await getScreenshots(slug);
   const fotosLimit = fotos.slice(0, 3);
 
-  console.log(detalhes);
+  const nomeUpper = detalhes.name.toUpperCase();
 
   return (
     <section className={styles.detalhes}>
+      <div className="relative h-52 w-[84%] overflow-hidden rounded-sm lg:h-[460px] xl:h-[504px] xl:max-h-[504px]">
+        <Image
+          className="object-cover"
+          src={detalhes.background_image || '/placeholder.png'}
+          alt={detalhes.name}
+          fill
+        />
+      </div>
       <div className={styles.detalhes__containerTop}>
-        <div className={styles.detalhes__img}>
-          <Image
-            src={detalhes.background_image || '/placeholder.png'}
-            alt={detalhes.name}
-            fill
-          />
-        </div>
-
-        <div className={styles.detalhes__title}>
-          <div className={styles.detalhes__titles}>
-            <h1 className={oldschoolGrotesk.className}>{detalhes?.name}</h1>
-            <div className={`flex items-center gap-4 ${geist.className}`}>
-              <div className="h-3 w-3 rounded-full bg-gray-500"></div>
-              <p className="text-[19px] font-[800]">
-                {detalhes.released.slice(0, 4)}
-              </p>
-              <div className="h-3 w-3 rounded-full bg-gray-500"></div>
-              <p className="text-[19px] font-[800]">
-                {detalhes.rating ? detalhes.rating : 'S/N'}
-              </p>
-              <div className="h-3 w-3 rounded-full bg-gray-500"></div>
-              <p className="text-[19px] font-[800]">
-                {detalhes.publishers[0].name}
-              </p>
+        <div className="flex w-full flex-col justify-between">
+          <div className="flex w-full flex-col gap-[8px]">
+            <div className="flex w-full flex-col items-start justify-between gap-6 lg:flex-row lg:items-center lg:gap-0">
+              <h1
+                className={`${anton.className} w-[90%] text-[42px] lg:text-[112px] lg:leading-[118px]`}
+              >
+                {nomeUpper}
+              </h1>
+              <Salvar jogo={detalhes} />
             </div>
           </div>
-          <div className={styles.detalhes__buttons}>
-            <Salvar jogo={detalhes} />
-          </div>
         </div>
       </div>
 
-      <div className={styles.sobre}>
-        <div className={`${styles.sobre__esq} w-[50%]`}>
-          <h2 className={`text-[22px] ${suisse.className}`}>SOBRE</h2>
-          <p className={`${geist.className} w-[80%] text-[20px] font-medium`}>
-            {detalhes.description_raw.length > 400
-              ? descricaoLimit
-              : detalhes.description_raw}
-          </p>
+      <div className="mb-[28px] flex w-[84%] flex-col justify-between gap-8 lg:flex-row lg:gap-0">
+        <p
+          className={`${geist.className} w-full text-[20px] font-medium text-[#bbbbbb] lg:w-[60%]`}
+        >
+          {detalhes.description_raw.length > 400
+            ? descricaoLimit
+            : detalhes.description_raw}
+        </p>
+        <div className={`flex flex-col gap-4 lg:items-end ${geist.className}`}>
+          <div className="flex items-center gap-4">
+            <p className="font-regular text-[#bbbbbb]">(ANO)</p>
+            <div className="h-2 w-2 rounded-full bg-[#FF643D]"></div>
+            <p className="text-[16px] font-[800] lg:text-[19px]">
+              {detalhes.released.slice(0, 4)}
+            </p>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <p className="font-regular text-[#bbbbbb]">(NOTA)</p>
+            <div className="h-2 w-2 rounded-full bg-[#FF643D]"></div>
+            <p className="text-[16px] font-[800] lg:text-[19px]">
+              {detalhes.rating ? detalhes.rating : 'S/N'}
+            </p>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <p className="font-regular text-[#bbbbbb]">(PUBLISHER)</p>
+            <div className="h-2 w-2 rounded-full bg-[#FF643D]"></div>
+            <p className="text-[16px] font-[800] lg:text-[19px]">
+              {detalhes.publishers[0].name}
+            </p>
+          </div>
         </div>
       </div>
-      <div className="mb-6 flex w-[80%] flex-wrap items-center justify-between gap-6">
+      <div className="mb-20 hidden w-[84%] flex-wrap items-center justify-between gap-6 lg:flex">
         <div className="relative overflow-hidden rounded-sm xl:h-[270px] xl:w-[460px]">
           <Image
             src={fotosLimit[0]?.image || '/placeholder.png'}
@@ -100,7 +115,7 @@ export default async function Detalhes({ params }: Props) {
             className="object-cover"
           ></Image>
         </div>
-        <div className="rounded-sms relative overflow-hidden xl:h-[270px] xl:w-[460px]">
+        <div className="relative overflow-hidden rounded-sm xl:h-[270px] xl:w-[460px]">
           <Image
             src={fotosLimit[2]?.image || '/placeholder.png'}
             fill
