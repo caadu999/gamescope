@@ -1,10 +1,8 @@
 import { getJogoSlug, getScreenshots } from '@/lib/API/API';
 import styles from '@/app/jogos/[slug]/detalhes.module.scss';
-import { oldschoolGrotesk } from '@/lib/fonts';
 import Salvar from '@/components/salvarButton/salvar';
 import Image from 'next/image';
-import { suisse, geist } from '../../../../public/fonts/fonts';
-import { anton } from '../../../../public/fonts/fonts';
+import { geist, anton } from '../../../../public/fonts/fonts';
 
 type Props = {
   params: Promise<{
@@ -17,7 +15,7 @@ export async function generateMetadata({ params }: Props) {
   const game = await getJogoSlug(slug);
 
   return {
-    title: `GAMESCOPE | ${game.name}`,
+    title: `GAMESCOPE • ${game.name}`,
     description: game.description_raw,
     openGraph: {
       title: game.name,

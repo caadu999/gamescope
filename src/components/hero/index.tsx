@@ -11,7 +11,7 @@ export default function Hero() {
   return (
     <section className={styles.container}>
       <TituloHome text="Ache seu novo jogo favorito aqui." />
-      <CardFlutuante className="left-2/4 top-8 z-30 hidden rounded-[50%] bg-[#ff6d38] p-3 md:absolute md:hidden lg:block">
+      <CardFlutuante className="left-2/4 top-8 z-30 hidden rounded-[50%] bg-[#FF643D] p-3 md:absolute md:hidden lg:block">
         <div>
           <FaFireAlt size={40} />
         </div>
