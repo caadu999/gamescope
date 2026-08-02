@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: Props) {
 export default async function Detalhes({ params }: Props) {
   const { slug } = await params;
   const detalhes = await getJogoSlug(slug);
-  const descricaoLimit = `${detalhes.description_raw.substring(0, 400)}...`;
+  const descricao = detalhes.description_raw ?? '';
+  const descricaoLimit = `${descricao.substring(0, 400)}...`;
 
   const fotos = await getScreenshots(slug);
   const fotosLimit = fotos.slice(0, 3);
@@ -64,9 +65,7 @@ export default async function Detalhes({ params }: Props) {
         <p
           className={`${geist.className} w-full text-[20px] font-medium text-[#bbbbbb] lg:w-[60%]`}
         >
-          {detalhes.description_raw.length > 400
-            ? descricaoLimit
-            : detalhes.description_raw}
+          {descricao.length > 400 ? descricaoLimit : descricao}
         </p>
         <div className={`flex flex-col gap-4 lg:items-end ${geist.className}`}>
           <div className="flex items-center gap-4">
@@ -89,7 +88,7 @@ export default async function Detalhes({ params }: Props) {
             <p className="font-regular text-[#bbbbbb]">(PUBLISHER)</p>
             <div className="h-2 w-2 rounded-full bg-[#FF643D]"></div>
             <p className="text-[16px] font-[800] lg:text-[19px]">
-              {detalhes.publishers[0]?.name}
+              {detalhes.publishers?.[0]?.name ?? 'S/N'}
             </p>
           </div>
         </div>

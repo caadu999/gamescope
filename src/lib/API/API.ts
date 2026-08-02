@@ -54,7 +54,7 @@ export async function getDetalhes(slug: string) {
 }
 
 export async function getJogoSlug(slug: string) {
-  const res = await APIURL.get<Detalhes>(`games/${slug}`);
+  const res = await APIURL.get<Detalhes>(`/games/${slug}`);
   return res.data;
 }
 export async function getJogoId(id: number) {
