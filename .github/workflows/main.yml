@@ -30,6 +30,8 @@ jobs:
         env:
           API_URL: ${{ vars.API_URL}}
           API_KEY: ${{ secrets.API_KEY}}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
   tests:
     runs-on: ubuntu-latest
