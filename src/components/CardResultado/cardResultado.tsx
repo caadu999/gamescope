@@ -11,7 +11,7 @@ type Props = {
 
 export default async function CardResultado({ jogo }: Props) {
   const nome = jogo.name?.substring(0, 43) + '...';
-  const ratingSlice = jogo.genres.slice(0, 4);
+  const ratingSlice = jogo.genres?.slice(0, 2);
   const cover = `https://images.igdb.com/igdb/image/upload/t_original/${jogo.cover.image_id}.jpg`;
   const descricao = jogo.summary?.substring(0, 80) + '...';
 
