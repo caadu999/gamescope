@@ -7,7 +7,7 @@ import { FaFireAlt } from 'react-icons/fa';
 import { BiSolidGame } from 'react-icons/bi';
 import SearchInput from '../searchInput';
 
-export default function Hero() {
+export default async function Hero() {
   return (
     <section className={styles.container}>
       <TituloHome text="Ache seu novo jogo favorito aqui." />

@@ -4,9 +4,8 @@ import { useContext } from 'react';
 import CardWishlist from '@/components/cardWishlist/cardWishlist';
 import TituloHome from '@/components/tituloHome';
 import styles from '@/app/wishlist/page.module.scss';
-import { FaHeart } from 'react-icons/fa';
+import { FaHeart, FaGamepad } from 'react-icons/fa';
 import CardFlutuante from '@/components/cardFlutuante/cardFlutuante';
-import { FaGamepad } from 'react-icons/fa';
 import SearchInput from '@/components/searchInput';
 
 export default function WishlistPage() {

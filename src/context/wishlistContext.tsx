@@ -1,12 +1,12 @@
 'use client';
 
-import { Results } from '@/types/types';
+import { Resultss } from '@/types/types';
 import { createContext, useState, useEffect } from 'react';
 import { getItem, setItem } from '@/utils/localStorage';
 
 type WishlistContextType = {
-  wishlist: Results[];
-  setWishlist: React.Dispatch<React.SetStateAction<Results[]>>;
+  wishlist: Resultss[];
+  setWishlist: React.Dispatch<React.SetStateAction<Resultss[]>>;
 };
 
 export const WishListContext = createContext<WishlistContextType | undefined>(
@@ -19,13 +19,13 @@ type WishlistProviderProps = {
 
 export function WishlistProvider({ children }: WishlistProviderProps) {
   // valor inicial seguro pro servidor
-  const [wishlist, setWishlist] = useState<Results[]>([]);
+  const [wishlist, setWishlist] = useState<Resultss[]>([]);
 
   // roda só no cliente
   useEffect(() => {
     const item = getItem('wishlist');
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (item) setWishlist(item as Results[]);
+    if (item) setWishlist(item as Resultss[]);
   }, []);
 
   // salva só depois que já carregou

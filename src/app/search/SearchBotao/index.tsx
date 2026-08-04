@@ -5,10 +5,10 @@ import { useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import Link from 'next/link';
 import { geist } from '../../../../public/fonts/fonts';
-import { Results } from '@/types/types';
+import { Resultss } from '@/types/types';
 
 type Props = {
-  jogo: Results;
+  jogo: Resultss;
 };
 
 export default function ResultButton({ jogo }: Props) {

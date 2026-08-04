@@ -1,87 +1,135 @@
-import { Data, Results, ScreenshotData } from '@/types/types';
-import { APIURL } from './axios';
-import { Detalhes } from '@/types/types';
+import { Resultss } from '@/types/types';
 
-export async function getJogos() {
-  const res = await APIURL.get<Data>('/games');
-  return res.data.results;
-}
+const agora = Math.floor(Date.now() / 1000);
 
-export async function getLancamentos() {
-  const res = await fetch(
-    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&ordering=released&page_size=20`,
-  );
+// API IGDB
 
-  if (!res.ok) throw new Error('Falha ao buscar lançamentos');
+// jogo em destaque
 
-  const data = await res.json();
-  return data.results as Results[];
-}
-export async function getJogosEmAlta() {
-  const res = await fetch(
-    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&ordering=-rating&page_size=20`,
-  );
-
-  if (!res.ok) throw new Error('Falha ao buscar Jogos em Alta');
-
-  const data = await res.json();
-  return data.results as Results[];
-}
-export async function getMaisBemAvaliados() {
-  const res = await fetch(
-    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&ordering=-metacritic&page_size=20`,
-  );
-
-  if (!res.ok) throw new Error('Falha ao buscar Jogos mais bem avaliados');
-
-  const data = await res.json();
-  return data.results as Results[];
-}
-
-export async function getJogoDestaque() {
-  const res = await APIURL.get<Data>('/games', {
-    params: {
-      ordering: '-metacritic',
+export async function getJogoDestacado() {
+  const response = await fetch('https://api.igdb.com/v4/games', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Client-ID': process.env.CLIENT_ID!,
+      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
     },
+    body: 'fields name, id, slug, summary, rating,genres.name, total_rating_count, cover.image_id; where rating != null & cover != null & summary != null & total_rating_count > 500 & rating > 90; sort total_rating_count desc; limit 1;',
   });
 
-  return res.data.results[0];
-}
-
-export async function getDetalhes(slug: string) {
-  const res = await APIURL.get<Detalhes>(`/games/${slug}`);
-  return res.data;
-}
-
-export async function getJogoSlug(slug: string) {
-  const res = await APIURL.get<Detalhes>(`/games/${slug}`);
-  return res.data;
-}
-export async function getJogoId(id: number) {
-  const res = await fetch(
-    `https://api.rawg.io/api/games/${id}?key=${process.env.API_KEY}`,
-  );
-
-  if (!res.ok) {
-    throw new Error('Erro ao buscar jogo');
+  if (!response.ok) {
+    throw new Error('Erro ao buscar jogo.');
   }
 
-  const data: Detalhes = await res.json();
-  return data;
+  const data = await response.json();
+  return data[0] as Resultss;
 }
 
-export async function getScreenshots(slug: string) {
-  const res = await APIURL.get<ScreenshotData>(`/games/${slug}/screenshots`);
-  return res.data.results;
+//pagina do jogo
+
+export async function getJogosSlug(slug: string) {
+  const response = await fetch(`https://api.igdb.com/v4/games`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Client-ID': process.env.CLIENT_ID!,
+      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+    },
+    body: `fields name, first_release_date, id, slug, summary, screenshots.image_id, rating,genres.name, involved_companies.company.name, total_rating_count, cover.image_id; where slug = "${slug}"; limit 1;`,
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error(`IGDB (${response.status}): ${error}`);
+  }
+
+  const data = await response.json();
+  return data[0] as Resultss;
 }
+
+// pegar lançamentos
+
+export async function Lancamentos() {
+  const response = await fetch(`https://api.igdb.com/v4/games`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Client-ID': process.env.CLIENT_ID!,
+      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+    },
+    body: `fields name, first_release_date, id, slug, summary, screenshots.image_id, rating,genres.name, involved_companies.company.name, total_rating_count, cover.image_id; where cover != null & rating != null & first_release_date <= ${agora}; sort first_release_date desc; limit 4;`,
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error(`IGDB (${response.status}): ${error}`);
+  }
+
+  const data = await response.json();
+  return data as Resultss[];
+}
+
+export async function EmAlta() {
+  const response = await fetch(`https://api.igdb.com/v4/games`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Client-ID': process.env.CLIENT_ID!,
+      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+    },
+    body: `fields name, first_release_date, id, slug, summary, screenshots.image_id, rating,genres.name, involved_companies.company.name, total_rating_count, cover.image_id; where cover != null & rating != null & total_rating_count > 50; sort rating desc; limit 4;`,
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error(`IGDB (${response.status}): ${error}`);
+  }
+
+  const data = await response.json();
+  return data as Resultss[];
+}
+export async function BemAval() {
+  const response = await fetch(`https://api.igdb.com/v4/games`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Client-ID': process.env.CLIENT_ID!,
+      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+    },
+    body: `fields name, first_release_date, id, slug, summary, screenshots.image_id, hypes, genres.name, involved_companies.company.name, cover.image_id; where cover != null & hypes != null & first_release_date > ${agora}; sort hypes desc; limit 4;`,
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error(`IGDB (${response.status}): ${error}`);
+  }
+
+  const data = await response.json();
+  return data as Resultss[];
+}
+
+//search
 
 export async function Search(query: string) {
-  const res = await fetch(
-    `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${encodeURIComponent(query)}&page_size=9`,
-  );
+  if (!query.trim()) return [];
 
-  if (!res.ok) throw new Error('Falha ao buscar Jogos');
+  const termoSanitizado = query.replace(/"/g, '');
 
-  const data = await res.json();
-  return data.results as Results[];
+  const response = await fetch(`https://api.igdb.com/v4/games`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Client-ID': process.env.CLIENT_ID!,
+      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+    },
+    body: `search "${termoSanitizado}"; fields name, first_release_date, id, slug, summary, screenshots.image_id, rating, genres.name, involved_companies.company.name, total_rating_count, cover.image_id; where cover != null; limit 20;`,
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error(`IGDB (${response.status}): ${error}`);
+  }
+
+  const data = await response.json();
+  return data as Resultss[];
 }

@@ -1,27 +1,25 @@
-import { Results } from '@/types/types';
+import { Resultss } from '@/types/types';
 import styles from '@/components/CardResultado/cardResultado.module.scss';
 import Image from 'next/image';
 import ResultButton from '@/app/search/SearchBotao';
 import Tags from '../tags';
 import { oldschoolGrotesk } from '@/lib/fonts';
-import { getDetalhes } from '@/lib/API/API';
 
 type Props = {
-  jogo: Results;
+  jogo: Resultss;
 };
 
 export default async function CardResultado({ jogo }: Props) {
-  const nome = jogo.name.substring(0, 43) + '...';
-  const detalhes = await getDetalhes(jogo.slug);
-  const ratingSlice = jogo.genres.slice(0, 1);
-
-  const descricao = detalhes.description_raw.substring(0, 80) + '...';
+  const nome = jogo.name?.substring(0, 43) + '...';
+  const ratingSlice = jogo.genres.slice(0, 4);
+  const cover = `https://images.igdb.com/igdb/image/upload/t_original/${jogo.cover.image_id}.jpg`;
+  const descricao = jogo.summary?.substring(0, 80) + '...';
 
   return (
     <div className={styles.container}>
       <div className={styles.container__img}>
         <Image
-          src={jogo.background_image || '/palceholder.png'}
+          src={cover || '/palceholder.png'}
           alt={jogo.name}
           fill
           quality={80}
@@ -33,14 +31,10 @@ export default async function CardResultado({ jogo }: Props) {
             <h2 className={oldschoolGrotesk.className}>
               {jogo.name.length > 44 ? nome : jogo.name}
             </h2>
-            <p>
-              {detalhes.description_raw.length > 80
-                ? descricao
-                : detalhes.description_raw}
-            </p>
+            <p>{jogo.summary?.length > 80 ? descricao : jogo.summary}</p>
           </div>
           <div className="hidden w-fit gap-2 lg:inline-flex">
-            {jogo.genres.length > 0 ? (
+            {jogo.genres?.length > 0 ? (
               ratingSlice.map((genre) => <Tags text={genre} key={genre.id} />)
             ) : (
               <p className="w-fit font-bold xl:w-4 xl:rounded-lg xl:px-4 xl:py-2">

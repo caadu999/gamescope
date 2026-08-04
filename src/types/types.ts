@@ -3,6 +3,49 @@ export type Data = {
   results: Results[];
 };
 
+export type Game = {
+  id: number;
+  slug: string;
+  name: string;
+  background_image: string;
+  rating: number;
+  description_raw: string;
+  genres: Genre[];
+};
+export type Resultss = {
+  id: number;
+  name: string;
+  slug: string;
+  summary: string;
+  rating: number;
+  total_rating: number;
+  first_release_date: number;
+  cover: Cover;
+  screenshots: Screenshot[];
+  genres: Genre[];
+  platforms: Platform[];
+  involved_companies: InvolvedCompany[];
+};
+
+export type Company = {
+  id: number;
+  name: string;
+};
+
+export type InvolvedCompany = {
+  publisher: boolean;
+  developer: boolean;
+  company: Company;
+};
+
+export interface Cover {
+  image_id: string;
+}
+
+export interface Platform {
+  name: string;
+}
+
 export type Results = {
   id: number;
   slug: string;
@@ -43,5 +86,5 @@ export type ScreenshotData = {
 
 export type Screenshot = {
   id: number;
-  image: string;
+  image_id: string;
 };

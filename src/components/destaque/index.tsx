@@ -1,4 +1,4 @@
-import { getDetalhes, getJogoDestaque } from '@/lib/API/API';
+import { getJogoDestacado } from '@/lib/API/API';
 import Link from 'next/link';
 import { PiStarFourFill } from 'react-icons/pi';
 
@@ -9,19 +9,17 @@ import { CursorFollow } from './cursorHover';
 import { geist } from '../../../public/fonts/fonts';
 
 export default async function Destaque() {
-  const jogosDestaque = await getJogoDestaque();
-  const jogosDestaqueDetalhes = await getDetalhes(jogosDestaque.slug);
-
-  const descricao = `${jogosDestaqueDetalhes.description_raw.substring(0, 180)}...`;
+  const jogos = await getJogoDestacado();
+  const descricao = `${jogos.summary?.substring(0, 180)}...`;
 
   return (
-    <Link href={`/jogos/${jogosDestaque.slug}`}>
+    <Link href={`/jogos/${jogos.slug}`}>
       <CursorFollow label="Veja o destaque">
         <section className="flex w-96 flex-col items-center rounded-xl border-[1px] border-solid border-[#2e2e2e] bg-[#111111] p-4 md:w-3/4 lg:h-[400px] lg:w-[920px] lg:flex-row lg:gap-6 lg:p-4 xl:w-[1100px]">
           <div
             className="flex h-80 w-[100%] flex-col justify-between rounded-lg bg-cover bg-center p-4 lg:h-full lg:w-96"
             style={{
-              backgroundImage: `url(${jogosDestaque.background_image})`,
+              backgroundImage: `url(https://images.igdb.com/igdb/image/upload/t_cover_big/${jogos?.cover?.image_id}.jpg)`,
             }}
           >
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#161513] p-2">
@@ -36,7 +34,7 @@ export default async function Destaque() {
               <h2
                 className={`mt-4 w-[90%] border-b-[1px] border-dotted border-[#434141] pb-2 text-3xl text-[#E8E8E3] lg:mt-0 lg:pb-3 lg:text-5xl ${oldschoolGrotesk.className}`}
               >
-                {jogosDestaqueDetalhes.name}
+                {jogos.name}
               </h2>
             </div>
             <p
@@ -46,7 +44,7 @@ export default async function Destaque() {
             </p>
             <div className="flex items-center justify-between gap-4 lg:w-full">
               <ul className={`hidden gap-4 lg:flex ${geist.className}`}>
-                {jogosDestaque.genres.slice(0, 3).map((genre) => (
+                {jogos?.genres?.slice(0, 3).map((genre) => (
                   <li
                     key={genre.id}
                     className="rounded-[3px] bg-[#E8E8E3] px-4 py-1 text-[18px] font-bold text-[#141414]"
@@ -56,7 +54,7 @@ export default async function Destaque() {
                 ))}
               </ul>
               <div>
-                <Salvar jogo={jogosDestaque} />
+                <Salvar jogo={jogos} />
               </div>
             </div>
           </div>

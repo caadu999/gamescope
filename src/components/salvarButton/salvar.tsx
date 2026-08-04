@@ -4,11 +4,11 @@ import { FaBookmark } from 'react-icons/fa';
 
 import { useContext } from 'react';
 import { WishListContext } from '@/context/wishlistContext';
-import { Results } from '@/types/types';
+import { Resultss } from '@/types/types';
 import { FaCheck } from 'react-icons/fa';
 
 type JogoProps = {
-  jogo: Results;
+  jogo: Resultss;
 };
 
 export default function Salvar({ jogo }: JogoProps) {

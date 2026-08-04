@@ -2,7 +2,7 @@
 import { WishListContext } from '@/context/wishlistContext';
 import { useContext, useState } from 'react';
 import { FaRegTrashAlt } from 'react-icons/fa';
-import { Results } from '@/types/types';
+import { Resultss } from '@/types/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import Tags from '../tags';
@@ -12,12 +12,14 @@ import { motion } from 'framer-motion';
 import { GoArrowUpLeft } from 'react-icons/go';
 
 type CardProps = {
-  jogo: Results;
+  jogo: Resultss;
 };
 
 export default function CardWishlist({ jogo }: CardProps) {
   const [isHover, setIsHover] = useState(false);
   const context = useContext(WishListContext);
+  const cover = `https://images.igdb.com/igdb/image/upload/t_original/${jogo.cover.image_id}.jpg`;
+  const nota = String(jogo.rating).slice(0, 4);
 
   if (!context) {
     throw new Error(
@@ -38,7 +40,7 @@ export default function CardWishlist({ jogo }: CardProps) {
       <div className="relative h-44 w-36 overflow-hidden rounded-lg md:w-44 lg:h-48 lg:w-44">
         <Image
           className="object-cover"
-          src={jogo.background_image || 'placeholder.png'}
+          src={cover || 'placeholder.png'}
           quality={80}
           fill
           alt={jogo.name}
@@ -60,7 +62,7 @@ export default function CardWishlist({ jogo }: CardProps) {
             </button>
           </div>
           <p>
-            {jogo.rating} <span className="text-base font-normal">/ 5.0</span>
+            {nota} <span className="text-base font-normal">/ 100</span>
           </p>
         </div>
         <div className="flex w-full items-center justify-between">

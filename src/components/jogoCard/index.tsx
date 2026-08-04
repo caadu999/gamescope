@@ -1,6 +1,6 @@
 'use client';
 
-import { Results } from '@/types/types';
+import { Resultss } from '@/types/types';
 import { oldschoolGrotesk } from '@/lib/fonts';
 import Image from 'next/image';
 import { easeOut, motion } from 'framer-motion';
@@ -9,13 +9,14 @@ import { GoArrowUpLeft } from 'react-icons/go';
 import Link from 'next/link';
 
 type CardProps = {
-  jogo: Results;
+  jogo: Resultss;
 };
 
 export default function Card({ jogo }: CardProps) {
   const [isHover, setIsHover] = useState(false);
   const tituloMenor = `${jogo.name.substring(0, 15)}...`;
-  console.log(jogo);
+  const cover = `https://images.igdb.com/igdb/image/upload/t_original/${jogo.cover.image_id}.jpg`;
+  const nota = String(jogo.rating).slice(0, 4);
 
   return (
     <section
@@ -31,10 +32,10 @@ export default function Card({ jogo }: CardProps) {
         <div className="relative h-40 overflow-hidden rounded-lg md:h-80 xl:rounded-none">
           <Image
             className="object-cover transition-all duration-200 ease-in hover:scale-125"
-            src={jogo.background_image || '/placeholder.png'}
+            src={cover || '/placeholder.png'}
             alt={jogo.name}
             fill
-            quality={70}
+            quality={75}
           />
         </div>
 
@@ -54,7 +55,7 @@ export default function Card({ jogo }: CardProps) {
                 }}
                 className={`hidden w-[90%] text-[20px] xl:block ${oldschoolGrotesk.className}`}
               >
-                {jogo.name.length >= 15 ? tituloMenor : jogo.name}
+                {jogo.name?.length >= 15 ? tituloMenor : jogo.name}
               </motion.h1>
               <motion.h1
                 initial={{
@@ -94,7 +95,7 @@ export default function Card({ jogo }: CardProps) {
               }}
               className="h-2 w-2 rounded-full border-[1px] border-solid border-[#E8E8E3] bg-slate-50"
             ></motion.div>
-            <p>{jogo.rating ? jogo.rating : 'S/N'}</p>
+            <p>{nota ? nota : 'S/N'}</p>
             <motion.div
               animate={{
                 scale: isHover ? 0.9 : 1,
@@ -103,12 +104,10 @@ export default function Card({ jogo }: CardProps) {
               className="h-2 w-2 rounded-full border-[1px] border-solid border-[#E8E8E3] bg-slate-50"
             ></motion.div>
             <div>
-              {jogo.genres.length > 0 ? (
+              {jogo.genres?.length > 0 ? (
                 jogo.genres
                   .slice(0, 1)
-                  .map((genre) => (
-                    <div key={jogo.description_raw}>{genre.name}</div>
-                  ))
+                  .map((genre) => <div key={jogo.summary}>{genre.name}</div>)
               ) : (
                 <p className="font-bold xl:rounded-lg">S/N</p>
               )}
