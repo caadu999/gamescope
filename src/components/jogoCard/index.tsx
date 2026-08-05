@@ -19,7 +19,21 @@ export default function Card({ jogo }: CardProps) {
   const nota = String(jogo.rating).slice(0, 4);
 
   return (
-    <section
+    <motion.section
+      initial={{
+        opacity: 0,
+        y: 12,
+      }}
+
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+
+      transition={{
+        duration: 1,
+      }}
+
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
 
@@ -116,6 +130,6 @@ export default function Card({ jogo }: CardProps) {
           <div className="hidden gap-2 xl:flex"></div>
         </div>
       </Link>
-    </section>
+    </motion.section>
   );
 }

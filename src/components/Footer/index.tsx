@@ -3,6 +3,7 @@
 import Accordion from './accrodion';
 import { faqs } from './data';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Footer() {
   const [open, setOpen] = useState<number | null>(null);
@@ -13,7 +14,18 @@ export default function Footer() {
 
   return (
     <>
-      <div
+      <motion.div
+        initial={{
+          opacity: 0,
+        }}
+
+        whileInView={{
+          opacity: 1,
+        }}
+
+        transition={{
+          duration: 1,
+        }}
         className="relative flex h-[800px] w-full flex-col items-center overflow-hidden bg-[#181715] md:flex-row"
         style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}
       >
@@ -33,7 +45,7 @@ export default function Footer() {
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }

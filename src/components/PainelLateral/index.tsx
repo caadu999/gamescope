@@ -3,8 +3,7 @@
 import { CardContext } from '@/context/cardContext';
 import { useContext, useState } from 'react';
 import { easeIn, motion } from 'framer-motion';
-import { geist } from '../../../public/fonts/fonts';
-import { suisse } from '../../../public/fonts/fonts';
+import { geist, suisse } from '../../../public/fonts/fonts';
 
 export default function PainelLateral() {
   const context = useContext(CardContext);
@@ -111,7 +110,7 @@ export default function PainelLateral() {
           className={`flex w-full items-baseline justify-between text-[12px] text-[#6b645c] ${suisse.className}`}
         >
           <p>EST. 2026</p>
-          <p>POWERED BY RAWG API</p>
+          <p>POWERED BY IGDB API</p>
           <p>100,000+ GAMES </p>
         </div>
       </motion.div>

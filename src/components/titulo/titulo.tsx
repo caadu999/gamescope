@@ -16,6 +16,20 @@ export default function Titulo({ icon, text }: Props) {
 
   return (
     <motion.div
+      initial={{
+        opacity: 0,
+        y: 12,
+      }}
+
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+
+      transition={{
+        duration: 1.2,
+      }}
+
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
       className={`h-22 flex w-full select-none items-center justify-between overflow-hidden border-b border-dotted border-gray-400 p-4 md:mt-4`}
