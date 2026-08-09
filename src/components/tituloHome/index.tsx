@@ -19,7 +19,7 @@ export default function TituloHome() {
         delay: 1.9,
       }}
 
-      className={`mb-8 mt-8 w-96 select-none text-center text-6xl font-bold text-[#E8E8E3] md:w-4/5 md:text-7xl lg:w-[80%] lg:text-9xl lg:leading-[142px] xl:w-[1200px] ${oldschoolGrotesk.className}`}
+      className={`mb-4 mt-8 w-96 select-none text-center text-6xl font-bold text-[#E8E8E3] md:w-4/5 md:text-7xl lg:w-[80%] lg:text-9xl lg:leading-[142px] xl:w-[1300px] ${oldschoolGrotesk.className}`}
     >
       <div className="flex flex-col justify-center overflow-hidden">
         <motion.div
