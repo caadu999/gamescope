@@ -10,7 +10,7 @@ type Props = {
 };
 
 export default async function CardResultado({ jogo }: Props) {
-  const nome = jogo.name?.substring(0, 43) + '...';
+  const nome = jogo.name?.substring(0, 30) + '...';
   const ratingSlice = jogo.genres?.slice(0, 2);
   const cover = `https://images.igdb.com/igdb/image/upload/t_original/${jogo.cover.image_id}.jpg`;
   const descricao = jogo.summary?.substring(0, 80) + '...';
@@ -29,7 +29,7 @@ export default async function CardResultado({ jogo }: Props) {
         <div className={styles.container__info}>
           <div className={styles.container__title}>
             <h2 className={oldschoolGrotesk.className}>
-              {jogo.name.length > 44 ? nome : jogo.name}
+              {jogo.name.length > 30 ? nome : jogo.name}
             </h2>
             <p>{jogo.summary?.length > 80 ? descricao : jogo.summary}</p>
           </div>

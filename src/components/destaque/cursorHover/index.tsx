@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { useState, type ReactNode, type MouseEvent } from 'react';
+import { GoArrowUpRight } from 'react-icons/go';
 
 interface HoverFollowBadgeProps {
   children: ReactNode;
@@ -25,7 +26,7 @@ export function CursorFollow({ children, label }: HoverFollowBadgeProps) {
 
   return (
     <div
-      className="relative overflow-hidden"
+      className="relative"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onMouseMove={handleMouseMove}
@@ -48,7 +49,7 @@ export function CursorFollow({ children, label }: HoverFollowBadgeProps) {
       >
         {label}{' '}
         <div className="flex h-7 w-7 items-center rounded-[2px] bg-[#141414] p-2 text-white">
-          ↗
+          <GoArrowUpRight size={30} strokeWidth={2} />
         </div>
       </motion.div>
     </div>

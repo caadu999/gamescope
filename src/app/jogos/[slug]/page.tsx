@@ -28,9 +28,11 @@ export default async function Detalhes({ params }: Props) {
   const detalhes = await getJogosSlug(slug);
 
   return (
-    <section className={styles.detalhes}>
-      <Info jogo={detalhes} />
-      <Screenshots jogo={detalhes} />
-    </section>
+    <>
+      <section className={styles.detalhes}>
+        <Info jogo={detalhes} />
+        <Screenshots jogo={detalhes} />
+      </section>
+    </>
   );
 }

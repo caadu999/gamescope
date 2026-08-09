@@ -7,10 +7,10 @@ import { FaFireAlt } from 'react-icons/fa';
 import { BiSolidGame } from 'react-icons/bi';
 import SearchInput from '../searchInput';
 
-export default async function Hero() {
+export default function Hero() {
   return (
     <section className={styles.container}>
-      <TituloHome text="Ache seu novo jogo favorito aqui." />
+      <TituloHome />
       <CardFlutuante className="left-2/4 top-8 z-30 hidden rounded-[50%] bg-[#FF643D] p-3 md:absolute md:hidden lg:block">
         <div>
           <FaFireAlt size={40} />

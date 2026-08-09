@@ -20,6 +20,7 @@ export default function CardWishlist({ jogo }: CardProps) {
   const context = useContext(WishListContext);
   const cover = `https://images.igdb.com/igdb/image/upload/t_original/${jogo.cover.image_id}.jpg`;
   const nota = String(jogo.rating).slice(0, 4);
+  const desc = jogo.summary?.slice(0, 100);
 
   if (!context) {
     throw new Error(
@@ -36,8 +37,8 @@ export default function CardWishlist({ jogo }: CardProps) {
   const nome = jogo.name.substring(0, 30) + '...';
 
   return (
-    <div className="flex h-52 w-[90vw] items-center justify-between rounded-md border-[1px] border-solid border-[#252525] bg-[#111111] p-4 md:gap-4 lg:h-56 lg:w-[840px] lg:justify-normal lg:gap-4">
-      <div className="relative h-44 w-36 overflow-hidden rounded-lg md:w-44 lg:h-48 lg:w-44">
+    <div className="flex h-56 w-[90vw] items-center justify-between rounded-md border-[1px] border-solid border-[#252525] bg-[#111111] p-4 md:gap-4 lg:h-64 lg:w-[840px] lg:justify-normal lg:gap-5">
+      <div className="relative h-56 w-36 overflow-hidden rounded-sm md:w-44 lg:w-44">
         <Image
           className="object-cover"
           src={cover || 'placeholder.png'}
@@ -50,7 +51,7 @@ export default function CardWishlist({ jogo }: CardProps) {
         <div className="flex flex-col gap-4">
           <div className="flex w-full justify-between">
             <h1
-              className={`border-b-[1px] border-solid border-[#434141] text-[22px] font-bold lg:pb-2 lg:text-3xl ${oldschoolGrotesk.className}`}
+              className={`border-b-[1px] border-solid border-[#434141] pb-2 text-[22px] font-bold lg:text-3xl ${oldschoolGrotesk.className}`}
             >
               {jogo.name.length > 30 ? nome : jogo.name}
             </h1>
@@ -58,18 +59,21 @@ export default function CardWishlist({ jogo }: CardProps) {
               className="hidden h-12 w-12 items-center justify-center rounded-lg border-[1px] border-solid border-[#434141] md:flex"
               onClick={() => handleRemove(jogo.id)}
             >
-              <FaRegTrashAlt className="" size={20} />
+              <FaRegTrashAlt size={20} />
             </button>
           </div>
-          <p>
-            {nota} <span className="text-base font-normal">/ 100</span>
+          <p className="hidden w-[80%] text-gray-300 md:flex">{desc}...</p>
+          <p className="text-[24px] font-[800]">
+            {nota}{' '}
+            <span className="text-base font-normal text-[#e8e8e3]">/ 100</span>
           </p>
         </div>
+
         <div className="flex w-full items-center justify-between">
           <div className="hidden items-center gap-2 font-bold md:flex lg:text-2xl">
             <div className="flex gap-2">
               {jogo.genres.slice(0, 3).map((genero) => (
-                <Tags text={genero} key={jogo.id} />
+                <Tags text={genero} key={genero.id} />
               ))}
             </div>
           </div>

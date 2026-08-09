@@ -1,16 +1,22 @@
 'use client';
 
 import styles from '@/components/header/header.module.scss';
-import { oldschoolGrotesk } from '@/lib/fonts';
-import { motion } from 'framer-motion';
+import { easeInOut, motion } from 'framer-motion';
 import { useTransitionRouter } from 'next-view-transitions';
 import { rotas } from './data';
-import { useState } from 'react';
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import { CardContext } from '@/context/cardContext';
+import Bola from './bola';
+
+export type ItemProps = {
+  title: string;
+  url: string;
+  id: string;
+};
 
 export default function Header() {
   const router = useTransitionRouter();
+  const [bolaHover, setBolaHover] = useState(false);
 
   const context = useContext(CardContext);
 
@@ -60,20 +66,41 @@ export default function Header() {
     );
   }
 
+  function handleMouseEnter(item: ItemProps) {
+    setIsHover(item.id);
+    setBolaHover(true);
+  }
+
+  function handleMouseLeave() {
+    setIsHover(null);
+    setBolaHover(false);
+  }
+
   return (
-    <header className={styles.header}>
-      <h1 className={oldschoolGrotesk.className}>
-        <a href={'/'}>
-          <span>G</span>
-        </a>
-      </h1>
-      <nav>
-        <ul className="flex items-center justify-center gap-3 font-bold">
-          {rotas.map((item) => (
-            <a
-              className="relative flex items-center justify-center px-2 py-1"
-              onMouseEnter={() => setIsHover(item.id)}
-              onMouseLeave={() => setIsHover(null)}
+    <motion.header className={styles.header}>
+      <nav className="flex w-full items-center justify-between">
+        <ul className="flex items-center justify-center font-bold lg:gap-8">
+          {rotas.map((item, i) => (
+            <motion.a
+              initial={{
+                opacity: 0,
+                y: 24,
+              }}
+
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+
+              transition={{
+                duration: 0.5,
+                delay: 2.1 + i * 0.1,
+                ease: easeInOut,
+              }}
+
+              className="relative flex items-center justify-center px-3 py-1 text-lg"
+              onMouseEnter={() => handleMouseEnter(item)}
+              onMouseLeave={() => handleMouseLeave()}
               onClick={(e) => {
                 e.preventDefault();
 
@@ -89,27 +116,29 @@ export default function Header() {
               key={item.title}
               href={item.url}
             >
-              <p className="relative z-10 text-[#E8E8E3]">{item.title}</p>
-
-              <motion.div
-                initial={{
-                  clipPath: 'inset(0 100% 0 0)',
-                }}
-                animate={{
-                  clipPath:
-                    isHover === item.id
-                      ? 'inset(0 0% 0 0)'
-                      : 'inset(0 100% 0 0)',
-                }}
-
-                transition={{ duration: 0.3 }}
-                className="absolute z-0 h-full w-full bg-[#141414]"
-              ></motion.div>
-            </a>
+              <div className="relative z-10 flex items-center gap-8 text-[#E8E8E3]">
+                <Bola isHover={isHover} item={item} /> {item.title}
+              </div>
+            </motion.a>
           ))}
         </ul>
       </nav>
-    </header>
+      <motion.div
+        className="absolute bottom-0 h-[2px] w-full bg-gray-500"
+        initial={{
+          scaleX: 0,
+        }}
+
+        animate={{
+          scaleX: '100%',
+        }}
+
+        transition={{
+          duration: 0.6,
+          delay: 2.2,
+        }}
+      ></motion.div>
+    </motion.header>
   );
 }
 
