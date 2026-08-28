@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { motion, easeInOut, easeIn } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { geist } from '../../../public/fonts/fonts';
 
 export default function SearchInput() {
@@ -35,7 +35,7 @@ export default function SearchInput() {
         transition={{
           delay: 2.2,
           duration: 0.6,
-          ease: easeInOut,
+          ease: [0.16, 1, 0.3, 1],
         }}
       >
         <motion.input
@@ -65,7 +65,7 @@ export default function SearchInput() {
         transition={{
           delay: 2.25,
           duration: 0.6,
-          ease: easeInOut,
+          ease: [0.16, 1, 0.3, 1],
         }}
       >
         <motion.button
@@ -84,7 +84,7 @@ export default function SearchInput() {
             }}
             transition={{
               duration: 0.3,
-              ease: easeInOut,
+              ease: [0.16, 1, 0.3, 1],
             }}
             className="absolute flex shrink-0 items-center text-[#cacaca]"
           >
@@ -97,7 +97,7 @@ export default function SearchInput() {
             }}
             transition={{
               duration: 0.28,
-              ease: easeInOut,
+              ease: [0.16, 1, 0.3, 1],
             }}
             className="absolute z-30 flex shrink-0 items-center text-[#cacaca]"
           >

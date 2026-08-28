@@ -17,7 +17,6 @@ export type ItemProps = {
 export default function Header() {
   const router = useTransitionRouter();
   const [bolaHover, setBolaHover] = useState(false);
-
   const context = useContext(CardContext);
 
   if (!context) {

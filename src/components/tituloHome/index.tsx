@@ -1,7 +1,7 @@
 'use client';
 
 import { oldschoolGrotesk } from '@/lib/fonts';
-import { easeInOut, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 export default function TituloHome() {
   return (
@@ -32,7 +32,7 @@ export default function TituloHome() {
           transition={{
             duration: 0.6,
             delay: 2,
-            ease: easeInOut,
+            ease: [0.16, 1, 0.3, 1],
           }}
 
           className="relative z-10"
@@ -51,7 +51,7 @@ export default function TituloHome() {
           transition={{
             duration: 0.6,
             delay: 2.05,
-            ease: easeInOut,
+            ease: [0.16, 1, 0.3, 1],
           }}
         >
           favorito aqui.
