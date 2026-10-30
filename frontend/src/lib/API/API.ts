@@ -17,8 +17,13 @@ export async function getJogoDestacado() {
     body: 'fields name, id, slug, summary, rating,genres.name, total_rating_count, cover.image_id; where rating != null & cover != null & summary != null & total_rating_count > 500 & rating > 90; sort total_rating_count desc; limit 1;',
   });
 
+  console.log("Credenciais:", {
+  CLIENT_ID: !!process.env.CLIENT_ID,
+  ACCESS_TOKEN: !!process.env.ACCESS_TOKEN,
+});
+
   if (!response.ok) {
-    throw new Error('Erro ao buscar jogo.');
+    throw new Error(`Erro ao buscar jogo: ${response.status}`);;
   }
 
   const data = await response.json();
