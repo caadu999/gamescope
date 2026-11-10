@@ -2,21 +2,29 @@
 
 > Projeto em desenvolvimento.
 
-Uma plataforma para descoberta e exploração de jogos digitais desenvolvida com Next.js e TypeScript.
+O Gamescope é uma plataforma para descoberta e exploração de jogos digitais. A aplicação apresenta jogos, detalhes, gêneros, avaliações, imagens e lançamentos em uma interface desenvolvida com Next.js e TypeScript.
 
 ## Funcionalidades atuais
 
-- Listagem de jogos
-- Página de detalhes
-- Screenshots dos jogos
-- Exibição de gêneros
-
-## Próximas funcionalidades
-
+- Listagem de jogos em destaque, lançamentos e jogos em alta
 - Busca de jogos
-- Sistema de favoritos
-- Filtros avançados
-- Melhorias na pagina de detalhe
+- Página de detalhes por jogo
+- Screenshots e capa dos jogos
+- Exibição de gêneros, avaliações e empresas envolvidas
+- Lista de desejos salva localmente no navegador
+
+## API utilizada
+
+Os dados dos jogos são obtidos por meio da [IGDB API](https://api.igdb.com/), utilizando o endpoint `https://api.igdb.com/v4/games`.
+
+As credenciais da IGDB devem ser configuradas em variáveis de ambiente. Elas não devem ser incluídas diretamente no código ou versionadas:
+
+```env
+CLIENT_ID=seu_client_id
+ACCESS_TOKEN=seu_access_token
+```
+
+Consulte a documentação da [IGDB](https://api-docs.igdb.com/) para criar e gerenciar as credenciais.
 
 ## Tecnologias
 
@@ -25,53 +33,63 @@ Uma plataforma para descoberta e exploração de jogos digitais desenvolvida com
 - TypeScript
 - Sass Modules
 - Axios
-- RAWG API
+- IGDB API
 
 ## Instalação
 
+Entre na pasta do frontend e instale as dependências:
+
 ```bash
+cd frontend
 npm install
+```
+
+Crie o arquivo `frontend/.env.local` com as credenciais da IGDB e inicie o servidor de desenvolvimento:
+
+```bash
 npm run dev
 ```
 
-Abra `http://localhost:3000` no navegador.
+Abra [http://localhost:3000](http://localhost:3000) no navegador.
 
-## Vercel
+## Scripts disponíveis
 
-`https://gamescope-zeta.vercel.app/`
+Na pasta `frontend`, os principais scripts são:
 
-## Otimização de Performance
+```bash
+npm run dev          # inicia o ambiente de desenvolvimento
+npm run build        # gera a versão de produção
+npm run start        # inicia a aplicação em produção
+npm run lint         # verifica problemas de lint
+npm run format:check # verifica a formatação dos arquivos
+```
 
-Foi realizada uma análise de performance com o Google PageSpeed Insights, que apontou três pontos de melhoria. Abaixo estão descritas as ações tomadas.
+## Próximas funcionalidades
 
-### 1. Otimização de Imagens
+- Sistema de login e cadastro de usuários
+- Persistência da lista de desejos por usuário
+- Banco de dados para armazenar usuários, favoritos e preferências
+- Filtros avançados
+- Melhorias na página de detalhes
 
-As imagens do projeto são fornecidas por uma API de terceiros (RAWG). O projeto já utilizava o componente `<Image>` do Next.js, que aplica automaticamente:
+Atualmente, a lista de desejos é armazenada apenas no `localStorage` do navegador. Futuramente, o login permitirá identificar cada usuário e o banco de dados manterá seus dados disponíveis entre diferentes dispositivos e sessões.
 
-- Lazy loading
-- Conversão para os formatos WebP/AVIF
+## Deploy
 
-Nenhuma alteração foi necessária — a implementação já estava correta.
+A aplicação está disponível em:
 
-### 2. Latência do Servidor (TTFB de 3.743ms)
+[https://gamescope-zeta.vercel.app/](https://gamescope-zeta.vercel.app/)
 
-O PageSpeed apontou um Time to First Byte muito acima do recomendado (< 600ms). Duas correções foram aplicadas:
+Em ambientes de produção, as variáveis `CLIENT_ID` e `ACCESS_TOKEN` devem ser configuradas também nas variáveis de ambiente da plataforma de deploy.
 
-- **Região do servidor:** alterada de `iad1` (Virginia, EUA) para `gru1` (São Paulo, Brasil) nas configurações da Vercel, reduzindo a distância física entre servidor e usuários.
-- **Cache das requisições:** adicionado `export const revalidate = 3600` nas páginas que consomem a API da RAWG, evitando uma nova chamada à API a cada acesso.
+## Otimização de performance
 
-```js
-// app/page.tsx
+Foi realizada uma análise de performance com o Google PageSpeed Insights. As imagens são exibidas com o componente `<Image>` do Next.js, que oferece lazy loading e otimização automática para formatos modernos, como WebP e AVIF.
+
+As páginas que consomem a IGDB utilizam revalidação periódica para reduzir chamadas repetidas à API e melhorar o tempo de resposta:
+
+```ts
 export const revalidate = 3600; // cache de 1 hora
 ```
 
-### 3. Atraso na Renderização do LCP (560ms)
-
-O elemento de maior conteúdo visível (LCP) era o título principal (`h1`), que usa uma fonte local customizada. A fonte bloqueava a renderização do texto até ser totalmente carregada.
-
-**Correção:** adicionado `display: 'swap'` na importação da fonte via `next/font/local`.
-Com isso, o browser exibe o texto imediatamente com uma fonte fallback do sistema, substituindo pela fonte customizada assim que ela carrega.
-
-### Resultado esperado
-
-Essas três melhorias reduzem o LCP e o TTFB medidos pelo PageSpeed, otimizando o carregamento inicial da página.
+Também foi configurado `display: 'swap'` na fonte local utilizada pela aplicação. Assim, o texto é exibido imediatamente com uma fonte de fallback enquanto a fonte personalizada é carregada.
